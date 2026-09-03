@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raw Remedease – Natural RemedEASE</title>
+  <meta name="description" content="Raw Remedease — plant-based raw juices, teas, and eats for your natural wellness. Founded April 2024 by Sean Smith." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Raw Remedease Brand System
+       Primary: Deep black bg, white text
+       Accents: Brand Red #C41E3A, Brand Blue #1B5FA8, Brand Green #2E7D32
+    ============================================================ */
+    :root {
+      --red: #C41E3A;
+      --red-light: #E8334F;
+      --red-dark: #8B1429;
+      --blue: #1B5FA8;
+      --blue-light: #2E7BC4;
+      --blue-dark: #0E3D6B;
+      --green: #2E7D32;
+      --green-light: #43A047;
+      --green-dark: #1B5E20;
+      --black: #FFFFFF;
+      --surface: #F7F7F5;
+      --surface-2: #EFEFEC;
+      --surface-3: #E4E4E0;
+      --surface-4: #D8D8D3;
+      --border: #DEDDD8;
+      --text: #111111;
+      --text-muted: #555554;
+      --text-faint: #AAAAAA;
+      --white: #FFFFFF;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Work Sans', 'Helvetica Neue', sans-serif;
+
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-red: 0 4px 20px rgba(196, 30, 58, 0.3);
+      --shadow-green: 0 4px 20px rgba(46, 125, 50, 0.3);
+
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+
+      --header-h: 68px;
+    }
+
+    /* ============================================================
+       BASE RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-h);
+    }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text);
+      background-color: var(--black);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    h1,h2,h3,h4,h5,h6 { text-wrap: balance; line-height: 1.15; }
+    p, li { text-wrap: pretty; }
+    ul[role="list"], ol[role="list"] { list-style: none; }
+    button { cursor: pointer; background: none; border: none; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container { width: 100%; max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); }
+    .container--narrow { max-width: var(--content-narrow); }
+    .container--default { max-width: var(--content-default); }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+    /* Brand text helpers */
+    .brand-raw   { color: var(--blue); font-family: var(--font-display); }
+    .brand-remed { color: var(--green); font-family: var(--font-display); }
+    .brand-ease  { color: var(--red); font-family: var(--font-display); }
+
+    /* ============================================================
+       HEADER / NAV
+    ============================================================ */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      width: 100%;
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+    }
+    .header-logo-icon { width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+    .header-logo-text {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1;
+    }
+    .header-logo-text .raw { color: var(--blue); }
+    .header-logo-text .remed { color: var(--green); }
+    .header-logo-text .ease { color: var(--red); }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+    .nav-link {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+      padding-block: var(--space-1);
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 2px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      border-radius: var(--radius-full);
+    }
+    .nav-link:hover { color: var(--red); }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .cart-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--red);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .cart-btn:hover { background: var(--red-light); transform: translateY(-1px); }
+    .cart-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      background: var(--white);
+      color: var(--red);
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
+      padding-inline: 4px;
+    }
+    .cart-count.hidden { display: none; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: var(--space-2);
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    @media (max-width: 720px) {
+      .header-nav { display: none; }
+      .header-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--header-h); left: 0; right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        z-index: 99;
+      }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       MAIN LAYOUT
+    ============================================================ */
+    main { padding-top: var(--header-h); }
+
+    /* ============================================================
+       SECTION SHARED
+    ============================================================ */
+    .section {
+      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
+    }
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--space-3);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--text);
+      margin-bottom: var(--space-6);
+    }
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-8);
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    .hero {
+      min-height: calc(100svh - var(--header-h));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-block: var(--space-16) var(--space-12);
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(27,95,168,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(46,125,50,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(196,30,58,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-logo-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-8);
+    }
+    .hero-logo-ring {
+      position: absolute;
+      border-radius: 50%;
+      animation: spinRing 30s linear infinite;
+    }
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .hero-logo-svg { width: clamp(160px, 26vw, 220px); height: clamp(160px, 26vw, 220px); border-radius: 50%; }
+
+    .hero-eyebrow {
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      line-height: 1.05;
+      margin-bottom: var(--space-4);
+    }
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-inline: auto;
+      margin-bottom: var(--space-10);
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: var(--shadow-green);
+    }
+    .btn-primary:hover { background: var(--green-light); box-shadow: 0 6px 24px rgba(46,125,50,0.45); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--text-muted); background: var(--surface-2); }
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: var(--shadow-red);
+    }
+    .btn-red:hover { background: var(--red-light); box-shadow: 0 6px 24px rgba(196,30,58,0.45); }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .btn-blue:hover { background: var(--blue-light); }
+    .btn-outline-green {
+      background: transparent;
+      color: var(--green-light);
+      border-color: var(--green);
+    }
+    .btn-outline-green:hover { background: rgba(46,125,50,0.12); }
+    .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--text-base); }
+    .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--text-xs); }
+
+    .hero-scroll-hint {
+      margin-top: var(--space-12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-faint);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ============================================================
+       OVERVIEW SECTION
+    ============================================================ */
+    .overview-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .overview-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+    }
+
+    .overview-mission p {
+      color: var(--text-muted);
+      max-width: 55ch;
+      margin-bottom: var(--space-5);
+      font-size: var(--text-base);
+    }
+    .mission-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    .pillar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .pillar-tag.green { background: rgba(46,125,50,0.15); color: #6DCA71; border: 1px solid rgba(46,125,50,0.3); }
+    .pillar-tag.blue { background: rgba(27,95,168,0.15); color: #5B9FE8; border: 1px solid rgba(27,95,168,0.3); }
+    .pillar-tag.red { background: rgba(196,30,58,0.15); color: #F46B82; border: 1px solid rgba(196,30,58,0.3); }
+
+    .founder-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--green), var(--red));
+    }
+    .founder-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+      overflow: hidden;
+    }
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-1);
+    }
+    .founder-title {
+      font-size: var(--text-xs);
+      color: var(--green-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--space-5);
+    }
+    .founder-bio {
+      background: var(--surface-3);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+      font-style: italic;
+      /* TODO: Replace this placeholder with Sean Smith's actual bio */
+    }
+    .founded-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(196,30,58,0.12);
+      border: 1px solid rgba(196,30,58,0.25);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      color: #F46B82;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       DEAL BANNER
+    ============================================================ */
+    .deal-banner {
+      background: linear-gradient(135deg, var(--red-dark) 0%, #8B0000 40%, #5A0000 100%);
+      border-top: 1px solid rgba(196,30,58,0.3);
+      border-bottom: 1px solid rgba(196,30,58,0.3);
+      padding-block: var(--space-6);
+      text-align: center;
+    }
+    .deal-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4) var(--space-8);
+    }
+    .deal-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .deal-price {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--white);
+      font-weight: 700;
+    }
+    .deal-desc {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .deal-separator {
+      color: rgba(255,255,255,0.3);
+      font-size: var(--text-xl);
+    }
+    .deal-highlight {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-6);
+      text-align: center;
+    }
+    .deal-highlight strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      color: #FFD700;
+    }
+    .deal-highlight span { font-size: var(--text-xs); color: rgba(255,255,255,0.75); }
+
+    /* ============================================================
+       MENU SECTION
+    ============================================================ */
+    .menu-section { background: var(--black); }
+    .menu-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    /* All cards same height within each row */
+    .drink-card {
+      height: 100%;
+    }
+    @media (max-width: 900px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .menu-grid { grid-template-columns: 1fr; } }
+
+    /* Drink Card */
+    .drink-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+    }
+    .drink-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--surface-4);
+    }
+    .drink-card.seasonal { border-color: rgba(27,95,168,0.35); }
+    .drink-card-image {
+      width: 100%;
+      height: 220px;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .drink-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 500ms ease;
+    }
+    .drink-card:hover .drink-card-image img {
+      transform: scale(1.05);
+    }
+    /* Watermelon slideshow fills container */
+    .wm-slideshow {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .wm-slide {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      top: 0; left: 0;
+      transition: opacity 1s ease;
+    }
+    .drink-icon-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .drink-icon-label {
+      font-family: var(--font-display);
+      font-size: 9px;
+      text-align: center;
+      line-height: 1.2;
+      color: var(--text-faint);
+      padding-inline: 8px;
+    }
+    .drink-icon-label .r { color: var(--blue); }
+    .drink-icon-label .g { color: var(--green); }
+    .drink-icon-label .e { color: var(--red); }
+    .seasonal-badge {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      padding: var(--space-1) var(--space-3);
+      background: var(--blue);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .drink-card-body {
+      padding: var(--space-5);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .drink-number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: var(--space-1);
+    }
+    .drink-name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-3);
+      line-height: 1.2;
+    }
+    .drink-ingredients {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      flex: 1;
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+    .drink-ingredients strong { color: var(--text-faint); display: block; margin-bottom: var(--space-1); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; }
+    .drink-price {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-3);
+    }
+    .drink-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-5);
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+    }
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface-3);
+      color: var(--text);
+      font-size: var(--text-base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: background var(--transition), border-color var(--transition);
+      flex-shrink: 0;
+    }
+    .qty-btn:hover { background: var(--surface-4); border-color: var(--text-muted); }
+    .qty-display {
+      min-width: 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+    .add-to-cart-btn {
+      flex: 1;
+      padding: var(--space-2) var(--space-3);
+      background: var(--green);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-align: center;
+      transition: background var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .add-to-cart-btn:hover { background: var(--green-light); }
+    .add-to-cart-btn.added {
+      background: var(--surface-4);
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       CART PANEL
+    ============================================================ */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(420px, 100vw);
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-lg);
+    }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .cart-panel-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+    }
+    .cart-close-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 18px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .cart-close-btn:hover { background: var(--surface-3); color: var(--text); }
+    .cart-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .cart-empty {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      color: var(--text-faint);
+      padding: var(--space-12);
+      text-align: center;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+    }
+    .cart-item-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cart-item-price {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .cart-qty-btn {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background var(--transition);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .cart-qty-btn:hover { background: var(--surface-4); }
+    .cart-qty-display {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+    .cart-remove-btn {
+      color: var(--text-faint);
+      font-size: 14px;
+      padding: var(--space-1);
+      transition: color var(--transition);
+      cursor: pointer;
+    }
+    .cart-remove-btn:hover { color: var(--red-light); }
+
+    .cart-summary {
+      border-top: 1px solid var(--border);
+      padding: var(--space-5) var(--space-6);
+      flex-shrink: 0;
+    }
+    .cart-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-2);
+    }
+    .cart-summary-row .label { color: var(--text-muted); }
+    .cart-summary-row.total {
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-3);
+      margin-top: var(--space-2);
+      font-weight: 700;
+      font-size: var(--text-base);
+    }
+    .cart-summary-row.total .value { color: var(--green-light); }
+    .deal-applied {
+      background: rgba(46,125,50,0.12);
+      border: 1px solid rgba(46,125,50,0.25);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-xs);
+      color: #6DCA71;
+      margin-bottom: var(--space-4);
+      display: none;
+    }
+    .deal-applied.visible { display: block; }
+    .checkout-btn {
+      width: 100%;
+      padding: var(--space-4);
+      background: var(--red);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      margin-top: var(--space-4);
+      transition: background var(--transition), transform var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .checkout-btn:hover { background: var(--red-light); transform: translateY(-1px); }
+    .checkout-btn:disabled { background: var(--surface-3); color: var(--text-faint); cursor: not-allowed; transform: none; }
+
+    /* ============================================================
+       CHECKOUT SECTION (shown as a full-page overlay)
+    ============================================================ */
+    .checkout-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--black);
+      overflow-y: auto;
+      padding: var(--space-8) var(--space-6);
+    }
+    .checkout-screen.active { display: block; }
+    .checkout-inner {
+      max-width: 640px;
+      margin-inline: auto;
+      padding-bottom: var(--space-16);
+    }
+    .checkout-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--space-8);
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      transition: color var(--transition), border-color var(--transition);
+      cursor: pointer;
+      background: none;
+    }
+    .checkout-back:hover { color: var(--text); border-color: var(--text-muted); }
+    .checkout-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
+    }
+    .checkout-subtitle { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-8); }
+    .checkout-step-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      color: var(--green-light);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .checkout-step-label span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 11px;
+    }
+    .form-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .form-group:last-child { margin-bottom: 0; }
+    .form-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .form-input {
+      padding: var(--space-3) var(--space-4);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-size: var(--text-sm);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      width: 100%;
+    }
+    .form-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,0.15); }
+    .form-input.error { border-color: var(--red); }
+    .form-error { font-size: var(--text-xs); color: #F46B82; }
+    select.form-input { cursor: pointer; }
+
+    /* Delivery/Pickup Toggle */
+    .delivery-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .delivery-option {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      text-align: center;
+    }
+    .delivery-option:hover { border-color: var(--text-muted); }
+    .delivery-option.selected {
+      border-color: var(--green);
+      background: rgba(46,125,50,0.08);
+    }
+    .delivery-option input { display: none; }
+    .delivery-option-icon { font-size: 28px; margin-bottom: var(--space-2); }
+    .delivery-option-label { font-weight: 700; font-size: var(--text-sm); }
+    .delivery-option-sub { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+    .delivery-option.selected .delivery-option-sub { color: #6DCA71; }
+
+    .address-fields { display: none; }
+    .address-fields.visible { display: block; }
+    .pickup-info {
+      display: none;
+      background: rgba(46,125,50,0.1);
+      border: 1px solid rgba(46,125,50,0.25);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      font-size: var(--text-sm);
+      color: #6DCA71;
+      margin-top: var(--space-3);
+    }
+    .pickup-info.visible { display: block; }
+    .pickup-info strong { display: block; margin-bottom: var(--space-1); color: var(--white); }
+
+    /* Payment options */
+    .payment-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+    @media (max-width: 480px) { .payment-options { grid-template-columns: 1fr; } }
+    .payment-option {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .payment-option:hover { border-color: var(--text-muted); }
+    .payment-option.selected {
+      border-color: var(--blue);
+      background: rgba(27,95,168,0.1);
+    }
+    .payment-option input { display: none; }
+    .payment-icon { font-size: 24px; flex-shrink: 0; }
+    .payment-name { font-weight: 700; font-size: var(--text-sm); }
+    .payment-handle { font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* Order summary in checkout */
+    .checkout-order-summary {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+    .checkout-order-items { margin-bottom: var(--space-4); }
+    .checkout-order-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+      padding-block: var(--space-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .checkout-order-item:last-child { border-bottom: none; }
+    .checkout-order-totals { margin-top: var(--space-4); }
+    .checkout-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+      padding-block: var(--space-1);
+    }
+    .checkout-total-row .lbl { color: var(--text-muted); }
+    .checkout-total-row.final {
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-3);
+      margin-top: var(--space-2);
+      font-weight: 700;
+      font-size: var(--text-base);
+    }
+    .checkout-total-row.final .val { color: #FFD700; }
+
+    .complete-order-btn {
+      width: 100%;
+      padding: var(--space-5) var(--space-8);
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: var(--text-base);
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: var(--shadow-red);
+    }
+    .complete-order-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,30,58,0.45); }
+
+    /* ============================================================
+       ORDER CONFIRMATION MODAL
+    ============================================================ */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      max-width: 520px;
+      width: 100%;
+      max-height: 90svh;
+      overflow-y: auto;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+    .modal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--blue), var(--red));
+      border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    }
+    .modal-check {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(46,125,50,0.15);
+      border: 2px solid rgba(46,125,50,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-5);
+      font-size: 30px;
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+    .modal-subtitle { text-align: center; color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+    .modal-order-num {
+      text-align: center;
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: var(--space-6);
+    }
+    .payment-instruction-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-5);
+    }
+    .payment-instruction-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .payment-instruction-method {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+    .payment-instruction-handle {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: var(--space-4);
+    }
+    .payment-amount-box {
+      background: rgba(196,30,58,0.12);
+      border: 1px solid rgba(196,30,58,0.25);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      text-align: center;
+    }
+    .payment-amount-label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .payment-amount-value {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--white);
+      margin-block: var(--space-1);
+    }
+    .payment-amount-note { font-size: var(--text-xs); color: #F46B82; }
+    .payment-ref-note {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: var(--space-4);
+      padding: var(--space-3);
+      background: var(--surface-3);
+      border-radius: var(--radius-md);
+    }
+    .payment-ref-note strong { color: var(--text); }
+    .modal-close-btn {
+      width: 100%;
+      padding: var(--space-4);
+      background: var(--green);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition);
+      margin-top: var(--space-4);
+    }
+    .modal-close-btn:hover { background: var(--green-light); }
+
+    /* ============================================================
+       CONTACT SECTION
+    ============================================================ */
+    .contact-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+    .contact-info-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-info-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--blue), var(--green));
+    }
+    .contact-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-1);
+    }
+    .contact-role { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-6); }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+    }
+    .contact-detail-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon.green { background: rgba(46,125,50,0.15); }
+    .contact-detail-icon.blue { background: rgba(27,95,168,0.15); }
+    .contact-detail a { color: var(--blue-light); text-decoration: none; }
+    .contact-detail a:hover { color: var(--blue); text-decoration: underline; }
+
+    .contact-right h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+    }
+    .contact-right p { color: var(--text-muted); max-width: 40ch; margin-bottom: var(--space-6); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .site-footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding-block: var(--space-8);
+      text-align: center;
+    }
+    .footer-logo-text {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-3);
+    }
+    .footer-tagline { font-size: var(--text-sm); color: var(--text-faint); margin-bottom: var(--space-6); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4) var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+    .footer-link { font-size: var(--text-xs); color: var(--text-muted); transition: color var(--transition); }
+    .footer-link:hover { color: var(--text); }
+    .footer-copy { font-size: var(--text-xs); color: var(--text-faint); }
+
+    /* ============================================================
+       ANIMATIONS / SCROLL FADE
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       NOTIFICATION TOAST
+    ============================================================ */
+    #toast-container {
+      position: fixed;
+      bottom: var(--space-6);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      pointer-events: none;
+      align-items: center;
+    }
+    .toast {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      animation: toastIn 300ms ease forwards;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .toast.green { border-color: rgba(46,125,50,0.4); }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes toastOut {
+      to { opacity: 0; transform: translateY(10px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="#hero" class="header-logo" aria-label="Raw Remedease Home">
+      <img src="images/logo.jpg" alt="Raw Remedease Logo" class="header-logo-icon" style="border-radius:50%;object-fit:cover;" />
+      <span class="header-logo-text">
+        <span class="raw">Raw</span> <span class="remed">Remed</span><span class="ease">ease</span>
+      </span>
+    </a>
+
+    <nav class="header-nav" id="mobile-nav" role="navigation" aria-label="Main navigation">
+      <a href="#overview" class="nav-link">Overview</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Cart
+        <span class="cart-count hidden" id="cart-count">0</span>
+      </button>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO SECTION
+============================================================ -->
+<section id="hero" class="hero section">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="hero-logo-wrap fade-up">
+    <!-- Large hero logo — Flower of Life SVG matching brand -->
+    <img src="images/logo.jpg" alt="Raw Remedease Logo — Flower of Life with fresh fruits" class="hero-logo-svg" style="border-radius:50%;object-fit:cover;box-shadow:0 0 60px rgba(46,125,50,0.25), 0 0 30px rgba(196,30,58,0.15);" />
+  </div>
+
+  <div class="fade-up" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5);">
+    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(196,30,58,0.15);border:1px solid rgba(196,30,58,0.35);border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#F46B82;">✊🏾 Black-Owned Business</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(27,95,168,0.15);border:1px solid rgba(27,95,168,0.35);border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5B9FE8;">🏙️ Washington D.C.</span>
+  </div>
+  <p class="hero-eyebrow fade-up">Established April 2024 · For the People, By the People</p>
+  <h1 class="hero-title fade-up">
+    <span class="brand-raw">Raw</span> <span class="brand-remed">Remed</span><span class="brand-ease">ease</span>
+  </h1>
+  <p class="hero-subtitle fade-up">Natural RemedEASE through raw, plant-based juices. For the people, by the people. Feel better from the inside out.</p>
+  <div class="hero-cta-group fade-up">
+    <a href="#menu" class="btn btn-primary btn-lg">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12h8M12 8v8"/></svg>
+      Order Now
+    </a>
+    <a href="#overview" class="btn btn-secondary btn-lg">Learn More</a>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ============================================================
+     DEAL BANNER
+============================================================ -->
+<div class="deal-banner" aria-label="Current pricing deals">
+  <div class="deal-banner-inner container">
+    <div class="deal-item">
+      <span class="deal-price">$9</span>
+      <span class="deal-desc">Per Drink</span>
+    </div>
+    <div class="deal-separator" aria-hidden="true">·</div>
+    <div class="deal-highlight">
+      <strong>3 for $21 🌿</strong>
+      <span>Mix & match any drinks — save $6</span>
+    </div>
+    <div class="deal-separator" aria-hidden="true">·</div>
+    <div class="deal-item">
+      <span class="deal-price">Free</span>
+      <span class="deal-desc">Pickup Available</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERVIEW SECTION
+============================================================ -->
+<section id="overview" class="section overview-section" aria-labelledby="overview-title">
+  <div class="container container--default">
+    <div class="overview-grid">
+
+      <!-- Mission Column -->
+      <div class="overview-mission">
+        <p class="section-label">Our Mission</p>
+        <h2 class="section-title" id="overview-title">Natural Wellness,<br>From the Earth</h2>
+        <hr class="section-divider" style="background: linear-gradient(90deg, var(--green), var(--blue)); border:none;" />
+        <p>Raw Remedease exists to provide <strong>Natural RemedEASE</strong> — accessible, raw juice crafted for the community. No fillers, no shortcuts. Just the pure power of nature in every sip.</p>
+        <p>Founded in Washington D.C. by Sean Smith, a former vegan with a passion for plant-based living — Raw Remedease is <strong>Black-owned, community-driven, and built for the people</strong>. Real ingredients. Real results. Rooted in D.C.</p>
+        <p>Whether you're looking to boost immunity, improve digestion, detox, or simply feel more vibrant — every bottle is made with intention.</p>
+        <div class="mission-pillars" role="list">
+          <span class="pillar-tag red" role="listitem">✊🏾 Black-Owned</span>
+          <span class="pillar-tag blue" role="listitem">🏙️ Washington D.C.</span>
+          <span class="pillar-tag green" role="listitem">🌿 100% Plant-Based</span>
+          <span class="pillar-tag red" role="listitem">💧 Raw &amp; Fresh</span>
+          <span class="pillar-tag blue" role="listitem">🍎 No Added Sugar</span>
+          <span class="pillar-tag green" role="listitem">✨ For the People</span>
+        </div>
+      </div>
+
+      <!-- Founder Column -->
+      <div>
+        <div class="founder-card fade-up">
+          <div class="founder-avatar" aria-hidden="true">S</div>
+          <div class="founder-name">Sean Smith</div>
+          <div class="founder-title">Founder &amp; Creator</div>
+          <div class="founder-bio" role="note" aria-label="Founder bio" style="font-style:normal; color: var(--text-muted); line-height:1.8;">
+            Born and raised in Washington D.C., Sean Smith is a former vegan who turned his passion for plant-based living into something bigger — a movement. Raw Remedease is built <strong style="color:var(--text)">for the people, by the people</strong>: accessible, real, and rooted in community.
+          </div>
+          <div class="founded-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+            Established April 2024 · Washington D.C.
+          </div>
+          <div style="margin-top:var(--space-4);padding:var(--space-3) var(--space-4);background:rgba(27,95,168,0.1);border:1px solid rgba(27,95,168,0.25);border-radius:var(--radius-lg);font-size:var(--text-xs);color:#5B9FE8;">
+            🏪 <strong style="color:var(--text)">Available In-Store</strong> at Milk &amp; Honey H Street (DC) &amp; Milk &amp; Honey Woodmore (MD) — walk in and grab a fresh juice, no order needed.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DRINKS MENU SECTION
+============================================================ -->
+<section id="menu" class="section menu-section" aria-labelledby="menu-title">
+  <div class="container">
+    <div class="menu-header">
+      <div>
+        <p class="section-label">The Menu</p>
+        <h2 class="section-title" id="menu-title">Raw Juice &amp; Drink Menu</h2>
+        <p style="color: var(--text-muted); font-size: var(--text-sm);">Raw juice, made fresh · Each $9 · 3 for $21 (mix &amp; match)</p>
+      </div>
+      <button class="btn btn-outline-green" onclick="openCart()" aria-label="View cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        View Cart (<span id="menu-cart-count">0</span>)
+      </button>
+    </div>
+
+    <!-- Drink Cards Grid -->
+    <div class="menu-grid" id="drink-grid" role="list">
+
+      <!-- 1. APB -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="apb">
+        <div class="drink-card-image">
+          <img src="images/apb.jpg" alt="APB juice — Apple, Pineapple, Beets, Ginger" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">01</div>
+          <div class="drink-name">APB</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Apple · Pineapple · Beets · Ginger
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for APB">
+            <button class="qty-btn" onclick="updateDrinkQty('apb', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-apb">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('apb', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('apb', 'APB', 1)" aria-label="Add APB to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 2. A DATE WITH CINANABUTTER -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="cinanabutter">
+        <div class="drink-card-image">
+          <img src="images/cinanabutter.jpg" alt="A Date With Cinanabutter" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">02</div>
+          <div class="drink-name">A Date With Cinanabutter</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Dates · Banana · Cinnamon · Oat Milk · Pineapple · Coconut Water · Peanut Butter · Granola
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for A Date With Cinanabutter">
+            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-cinanabutter">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('cinanabutter', 'A Date With Cinanabutter', 1)" aria-label="Add A Date With Cinanabutter to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 3. 14 CARAT -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="carat14">
+        <div class="drink-card-image">
+          <img src="images/carat14.jpg" alt="14 Carat juice — Carrot, Orange, Turmeric, Lemon, Ginger, Apple" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">03</div>
+          <div class="drink-name">14 Carat</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Carrot · Orange · Turmeric · Lemon · Ginger · Apple
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for 14 Carat">
+            <button class="qty-btn" onclick="updateDrinkQty('carat14', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-carat14">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('carat14', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('carat14', '14 Carat', 1)" aria-label="Add 14 Carat to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 4. GREEN LIGHT -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="greenlight">
+        <div class="drink-card-image">
+          <img src="images/greenlight.jpg" alt="Green Light juice — Cucumber, Green Apple, Lemon, Ginger" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">04</div>
+          <div class="drink-name">Green Light</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Cucumber · Green Apple · Lemon · Ginger
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for Green Light">
+            <button class="qty-btn" onclick="updateDrinkQty('greenlight', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-greenlight">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('greenlight', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('greenlight', 'Green Light', 1)" aria-label="Add Green Light to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 5. SERENE GREEN CLEAN -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="serenegreen">
+        <div class="drink-card-image">
+          <img src="images/serenegreen.jpg" alt="Serene Green Clean juice — Kale, Lime, Celery, Cucumber, Mint, Banana, Green Apple, Kiwi, Pear" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">05</div>
+          <div class="drink-name">Serene Green Clean</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Kale · Lime · Celery · Cucumber · Mint · Banana · Green Apple · Kiwi · Pear
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for Serene Green Clean">
+            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-serenegreen">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('serenegreen', 'Serene Green Clean', 1)" aria-label="Add Serene Green Clean to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 6. DARK KNIGHT -->
+      <article class="drink-card fade-up" role="listitem" data-drink-id="darkknight">
+        <div class="drink-card-image">
+          <img src="images/darkknight.jpg" alt="Dark Knight juice — Activated Charcoal, Lemon, Agave, Aloe Vera, Pineapple, Spring Water" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">06</div>
+          <div class="drink-name">Dark Knight</div>
+          <div class="drink-ingredients">
+            <strong>Ingredients</strong>
+            Activated Charcoal · Lemon · Agave · Aloe Vera · Pineapple · Spring Water
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for Dark Knight">
+            <button class="qty-btn" onclick="updateDrinkQty('darkknight', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-darkknight">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('darkknight', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('darkknight', 'Dark Knight', 1)" aria-label="Add Dark Knight to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+      <!-- 7. BLACK SEEDED WATERMELON (Seasonal) -->
+      <article class="drink-card seasonal fade-up" role="listitem" data-drink-id="watermelon">
+        <div class="drink-card-image">
+          <div class="seasonal-badge" aria-label="Seasonal item">Seasonal</div>
+          <div class="wm-slideshow" style="width:100%;height:100%;position:relative;overflow:hidden;">
+            <img src="images/watermelon1.jpg" alt="Black Seeded Watermelon juice" class="wm-slide wm-active" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:opacity 1s ease;" loading="lazy" />
+            <img src="images/watermelon2.jpg" alt="Black Seeded Watermelon juice — second view" class="wm-slide" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity 1s ease;" loading="lazy" />
+          </div>
+        </div>
+        <div class="drink-card-body">
+          <div class="drink-number">07</div>
+          <div class="drink-name">Black Seeded Watermelon</div>
+          <div class="drink-ingredients">
+            <strong>Seasonal Fresh Juice</strong>
+            Seasonal fresh watermelon juice with black seeds. Available while in season.
+          </div>
+          <div class="drink-price">$9.00</div>
+        </div>
+        <div class="drink-card-footer">
+          <div class="qty-control" aria-label="Quantity for Black Seeded Watermelon">
+            <button class="qty-btn" onclick="updateDrinkQty('watermelon', -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-watermelon">0</span>
+            <button class="qty-btn" onclick="updateDrinkQty('watermelon', 1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('watermelon', 'Black Seeded Watermelon', 1)" aria-label="Add Black Seeded Watermelon to cart">+ Add to Cart</button>
+        </div>
+      </article>
+
+    </div><!-- end menu-grid -->
+
+    <!-- Delivery Note -->
+    <div style="margin-top: var(--space-10); padding: var(--space-5) var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: center; justify-content: space-between;" role="note" aria-label="Delivery and pickup information">
+      <div style="display: flex; align-items: flex-start; gap: var(--space-3);">
+        <div style="font-size: 28px; flex-shrink: 0;" aria-hidden="true">🚗</div>
+        <div>
+          <div style="font-weight: 700; margin-bottom: 4px;">Delivery Available</div>
+          <div style="font-size: var(--text-xs); color: var(--text-muted);">Within 40 miles of Waldorf, MD · $5.99 delivery fee</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: var(--space-3);">
+        <div style="font-size: 28px; flex-shrink: 0;" aria-hidden="true">🏪</div>
+        <div>
+          <div style="font-weight: 700; margin-bottom: 4px;">Buy In-Store</div>
+          <div style="font-size: var(--text-xs); color: var(--text-muted);">Milk &amp; Honey H Street, Washington DC</div>
+          <div style="font-size: var(--text-xs); color: var(--text-muted);">Milk &amp; Honey Woodmore, MD</div>
+          <div style="font-size: var(--text-xs); color: var(--green-light); margin-top: 2px;">Walk in anytime — no order needed</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="openCart()" aria-label="View cart and proceed to checkout">
+        View Cart &amp; Order
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT SECTION
+============================================================ -->
+<section id="contact" class="section contact-section" aria-labelledby="contact-title">
+  <div class="container container--default">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title" id="contact-title">Contact Sean Smith</h2>
+        <hr class="section-divider" style="background: linear-gradient(90deg, var(--red), var(--blue)); border:none;" />
+        <div class="contact-info-card">
+          <div class="founder-avatar" style="margin-bottom: var(--space-4);" aria-hidden="true">S</div>
+          <div class="contact-name">Sean Smith</div>
+          <div class="contact-role">Founder · Raw Remedease</div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon green" aria-hidden="true">✉️</div>
+            <div>
+              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Email</div>
+              <!-- TODO: Confirm final email address with Sean Smith -->
+              <a href="mailto:sean@rawremedease.com">sean@rawremedease.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon blue" aria-hidden="true">📍</div>
+            <div>
+              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">In-Store Locations</div>
+              <span>Milk &amp; Honey H Street, Washington DC<br/>Milk &amp; Honey Woodmore, MD<br/><span style="font-size:var(--text-xs);color:var(--green-light);">Walk in to purchase · No online pickup orders</span></span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon green" aria-hidden="true">📦</div>
+            <div>
+              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Delivery Area</div>
+              <span>Within 40 miles of Waldorf, MD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <h3>Ready to Order?</h3>
+        <p>Browse our raw juice menu, add your favorites to cart, and we'll deliver straight to your door. Or walk into <strong>Milk &amp; Honey H Street (DC)</strong> or <strong>Milk &amp; Honey Woodmore (MD)</strong> to grab one in person.</p>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <a href="#menu" class="btn btn-primary">Browse the Menu</a>
+          <a href="mailto:sean@rawremedease.com" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Sean
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logo-text">
+      <span class="brand-raw">Raw</span> <span class="brand-remed">Remed</span><span class="brand-ease">ease</span>
+    </div>
+    <p class="footer-tagline">Natural RemedEASE · Raw Juice · Black-Owned · Washington D.C. · For the People, By the People</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#overview" class="footer-link">Overview</a>
+      <a href="#menu" class="footer-link">Menu</a>
+      <a href="#contact" class="footer-link">Contact</a>
+      <a href="mailto:sean@rawremedease.com" class="footer-link">Email Us</a>
+    </nav>
+    <p class="footer-copy">© 2024 Raw Remedease · Founded by Sean Smith · Waldorf, MD</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     CART PANEL
+============================================================ -->
+<div class="cart-overlay" id="cart-overlay" role="dialog" aria-modal="true" aria-label="Shopping cart" onclick="closeCart()">
+</div>
+<aside class="cart-panel" id="cart-panel" aria-label="Shopping cart">
+  <div class="cart-panel-header">
+    <h2 class="cart-panel-title">Your Cart</h2>
+    <button class="cart-close-btn" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items-list" id="cart-items-list" role="list" aria-live="polite">
+    <div class="cart-empty" id="cart-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="color: var(--text-faint)"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <div>
+        <p style="font-weight:600; margin-bottom: 4px;">Your cart is empty</p>
+        <p style="font-size: var(--text-xs);">Add drinks from the menu to get started.</p>
+      </div>
+      <button class="btn btn-outline-green btn-sm" onclick="closeCart(); document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Browse Menu</button>
+    </div>
+  </div>
+  <div class="cart-summary" id="cart-summary" style="display:none;" aria-live="polite">
+    <div class="deal-applied" id="deal-applied">
+      🌿 3-for-$21 deal applied! You're saving <span id="deal-savings">$0</span>
+    </div>
+    <div class="cart-summary-row">
+      <span class="label">Items</span>
+      <span class="value" id="summary-items">0</span>
+    </div>
+    <div class="cart-summary-row">
+      <span class="label">Regular Total</span>
+      <span class="value" id="summary-regular">$0.00</span>
+    </div>
+    <div class="cart-summary-row" id="discount-row" style="display:none;">
+      <span class="label" style="color: #6DCA71;">Discount</span>
+      <span class="value" style="color: #6DCA71;" id="summary-discount">-$0.00</span>
+    </div>
+    <div class="cart-summary-row total">
+      <span class="label">Total</span>
+      <span class="value" id="summary-total">$0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkout-btn" onclick="openCheckout()" aria-label="Proceed to checkout">
+      Proceed to Checkout →
+    </button>
+  </div>
+</aside>
+
+<!-- ============================================================
+     CHECKOUT SCREEN
+============================================================ -->
+<div class="checkout-screen" id="checkout-screen" role="dialog" aria-modal="true" aria-labelledby="checkout-heading">
+  <div class="checkout-inner">
+    <button class="checkout-back" onclick="closeCheckout()" aria-label="Back to cart">
+      ← Back to Cart
+    </button>
+    <h1 class="checkout-title" id="checkout-heading">Checkout</h1>
+    <p class="checkout-subtitle">Complete your order details below.</p>
+
+    <!-- Step 1: Contact Info -->
+    <div class="checkout-step-label"><span>1</span> Contact Information</div>
+    <div class="form-section">
+      <div class="form-group">
+        <label class="form-label" for="full-name">Full Name *</label>
+        <input type="text" id="full-name" class="form-input" placeholder="Your full name" autocomplete="name" />
+        <span class="form-error" id="err-name" style="display:none">Please enter your full name.</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address *</label>
+          <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email" />
+          <span class="form-error" id="err-email" style="display:none">Please enter a valid email.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number *</label>
+          <input type="tel" id="phone" class="form-input" placeholder="(555) 000-0000" autocomplete="tel" />
+          <span class="form-error" id="err-phone" style="display:none">Please enter your phone number.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Delivery Address (online orders = delivery only) -->
+    <div class="checkout-step-label"><span>2</span> Delivery Address</div>
+    <div class="form-section">
+      <div style="padding: var(--space-3) var(--space-4); background: rgba(27,95,168,0.08); border: 1px solid rgba(27,95,168,0.25); border-radius: var(--radius-md); font-size: var(--text-xs); color: #5B9FE8; margin-bottom: var(--space-5);" role="note">
+        🚗 Online orders are <strong>delivery only</strong> — within 40 miles of Waldorf, MD. A <strong>$5.99</strong> delivery fee applies.<br/>
+        <span style="margin-top:4px;display:block;color:var(--text-muted);">Want to buy in person? Visit <strong style="color:var(--text)">Milk &amp; Honey H Street (DC)</strong> or <strong style="color:var(--text)">Milk &amp; Honey Woodmore (MD)</strong> — no order needed.</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="street">Street Address *</label>
+        <input type="text" id="street" class="form-input" placeholder="123 Main St" autocomplete="street-address" />
+        <span class="form-error" id="err-street" style="display:none">Please enter your street address.</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="city">City *</label>
+          <input type="text" id="city" class="form-input" placeholder="City" autocomplete="address-level2" />
+          <span class="form-error" id="err-city" style="display:none">Please enter your city.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="state">State *</label>
+          <input type="text" id="state" class="form-input" placeholder="MD" maxlength="2" autocomplete="address-level1" />
+          <span class="form-error" id="err-state" style="display:none">Please enter your state.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="zip">ZIP Code *</label>
+        <input type="text" id="zip" class="form-input" placeholder="20601" maxlength="10" autocomplete="postal-code" />
+        <span class="form-error" id="err-zip" style="display:none">Please enter your ZIP code.</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Payment Method -->
+    <div class="checkout-step-label"><span>3</span> Payment Method</div>
+    <div class="form-section">
+      <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">Select how you'll send payment after placing your order.</p>
+      <div class="payment-options" role="radiogroup" aria-label="Choose payment method">
+        <label class="payment-option" id="pay-cashapp" onclick="setPayment('cashapp')">
+          <input type="radio" name="payment" value="cashapp" id="radio-cashapp" />
+          <div class="payment-icon" aria-hidden="true">💵</div>
+          <div>
+            <div class="payment-name">Cash App</div>
+            <div class="payment-handle">$RawRemedease</div>
+          </div>
+        </label>
+        <label class="payment-option" id="pay-venmo" onclick="setPayment('venmo')">
+          <input type="radio" name="payment" value="venmo" id="radio-venmo" />
+          <div class="payment-icon" aria-hidden="true">💸</div>
+          <div>
+            <div class="payment-name">Venmo</div>
+            <div class="payment-handle">@Sean-Smith-RR</div>
+          </div>
+        </label>
+        <label class="payment-option" id="pay-paypal" onclick="setPayment('paypal')">
+          <input type="radio" name="payment" value="paypal" id="radio-paypal" />
+          <div class="payment-icon" aria-hidden="true">💙</div>
+          <div>
+            <div class="payment-name">PayPal</div>
+            <div class="payment-handle">@RawRemedease</div>
+          </div>
+        </label>
+        <label class="payment-option" id="pay-zelle" onclick="setPayment('zelle')">
+          <input type="radio" name="payment" value="zelle" id="radio-zelle" />
+          <div class="payment-icon" aria-hidden="true">🟣</div>
+          <div>
+            <div class="payment-name">Zelle</div>
+            <!-- TODO: Add Sean's Zelle phone number or email -->
+            <div class="payment-handle">sean@rawremedease.com</div>
+          </div>
+        </label>
+      </div>
+      <span class="form-error" id="err-payment" style="display:none; margin-top: var(--space-3);">Please select a payment method.</span>
+    </div>
+
+    <!-- Step 4: Order Summary -->
+    <div class="checkout-step-label"><span>4</span> Order Summary</div>
+    <div class="checkout-order-summary" id="checkout-order-summary">
+      <div class="checkout-order-items" id="checkout-order-items"></div>
+      <div class="checkout-order-totals" id="checkout-order-totals"></div>
+    </div>
+
+    <button class="complete-order-btn" id="complete-order-btn" onclick="completeOrder()" aria-label="Complete your order">
+      Complete Order 🌿
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     ORDER CONFIRMATION MODAL
+============================================================ -->
+<div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-check" aria-hidden="true">🌿</div>
+    <h2 class="modal-title" id="modal-title">Order Submitted!</h2>
+    <p class="modal-subtitle">Thank you for your order. Please send payment using the instructions below.</p>
+    <p class="modal-order-num" id="modal-order-num">Order #RR-000000</p>
+
+    <div class="payment-instruction-box">
+      <div class="payment-instruction-label">Payment Method</div>
+      <div class="payment-instruction-method" id="modal-pay-method">Cash App</div>
+      <div class="payment-instruction-handle" id="modal-pay-handle">$RawRemedease</div>
+      <div class="payment-amount-box">
+        <div class="payment-amount-label">Amount Due</div>
+        <div class="payment-amount-value" id="modal-amount">$0.00</div>
+        <div class="payment-amount-note" id="modal-amount-note"></div>
+      </div>
+      <div class="payment-ref-note" id="modal-ref-note">
+        Include your order number as reference when sending payment.
+      </div>
+    </div>
+
+    <button class="modal-close-btn" onclick="closeModal()" aria-label="Close order confirmation">
+      Done — Got It!
+    </button>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // ============================================================
+  // CART STATE
+  // ============================================================
+  const PRICE_SINGLE = 9;
+  const PRICE_BUNDLE = 21; // 3 for $21
+
+  let cart = {}; // { drinkId: { name, qty } }
+
+
+
+  function saveCart() {
+    
+  }
+
+  // Discount formula: floor(total/3)*21 + (total%3)*9
+  function calcTotal(totalQty) {
+    const bundles = Math.floor(totalQty / 3);
+    const singles = totalQty % 3;
+    return (bundles * PRICE_BUNDLE) + (singles * PRICE_SINGLE);
+  }
+
+  function getTotalQty() {
+    return Object.values(cart).reduce((s, v) => s + v.qty, 0);
+  }
+
+  function getRegularTotal(totalQty) {
+    return totalQty * PRICE_SINGLE;
+  }
+
+  // ============================================================
+  // MENU QUANTITY CONTROLS
+  // ============================================================
+  // Called by +/- buttons on drink cards
+  function updateDrinkQty(id, delta) {
+    const current = (cart[id] && cart[id].qty) || 0;
+    const newQty = Math.max(0, Math.min(9, current + delta));
+    const nameEl = document.querySelector(`[data-drink-id="${id}"] .drink-name`);
+    const name = nameEl ? nameEl.textContent : id;
+
+    if (newQty === 0) {
+      delete cart[id];
+    } else {
+      cart[id] = { name, qty: newQty };
+    }
+    const display = document.getElementById(`qty-${id}`);
+    if (display) display.textContent = newQty;
+    saveCart();
+    updateCartUI();
+  }
+
+  // Add 1 to cart from "Add to Cart" button
+  function addToCart(id, name, qty) {
+    const current = (cart[id] && cart[id].qty) || 0;
+    cart[id] = { name, qty: Math.min(9, current + qty) };
+    const display = document.getElementById(`qty-${id}`);
+    if (display) display.textContent = cart[id].qty;
+    saveCart();
+    updateCartUI();
+    showToast(`🌿 Added ${name} to cart`, 'green');
+  }
+
+  // ============================================================
+  // CART UI UPDATES
+  // ============================================================
+  function updateCartUI() {
+    const totalQty = getTotalQty();
+    const discountedTotal = calcTotal(totalQty);
+    const regularTotal = getRegularTotal(totalQty);
+    const savings = regularTotal - discountedTotal;
+
+    // Header count badge
+    const countBadge = document.getElementById('cart-count');
+    const menuCount = document.getElementById('menu-cart-count');
+    if (countBadge) {
+      countBadge.textContent = totalQty;
+      countBadge.classList.toggle('hidden', totalQty === 0);
+    }
+    if (menuCount) menuCount.textContent = totalQty;
+
+    // Cart items list
+    const list = document.getElementById('cart-items-list');
+    const empty = document.getElementById('cart-empty');
+    const summary = document.getElementById('cart-summary');
+
+    if (totalQty === 0) {
+      if (list) {
+        list.innerHTML = '';
+        list.appendChild(empty);
+      }
+      if (summary) summary.style.display = 'none';
+      return;
+    }
+
+    // Build item rows
+    let itemsHTML = '';
+    Object.entries(cart).forEach(([id, item]) => {
+      itemsHTML += `
+        <div class="cart-item" role="listitem">
+          <div class="cart-item-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name" title="${item.name}">${item.name}</div>
+            <div class="cart-item-price">$${(item.qty * PRICE_SINGLE).toFixed(2)}</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="cart-qty-btn" onclick="updateDrinkQty('${id}', -1)" aria-label="Decrease ${item.name} quantity">−</button>
+            <span class="cart-qty-display" aria-label="${item.qty} in cart">${item.qty}</span>
+            <button class="cart-qty-btn" onclick="updateDrinkQty('${id}', 1)" aria-label="Increase ${item.name} quantity">+</button>
+          </div>
+          <button class="cart-remove-btn" onclick="removeItem('${id}')" aria-label="Remove ${item.name} from cart">✕</button>
+        </div>`;
+    });
+    if (list) list.innerHTML = itemsHTML;
+
+    // Summary
+    if (summary) summary.style.display = 'block';
+    const dealEl = document.getElementById('deal-applied');
+    const discountRow = document.getElementById('discount-row');
+    const dealSavings = document.getElementById('deal-savings');
+
+    document.getElementById('summary-items').textContent = totalQty;
+    document.getElementById('summary-regular').textContent = `$${regularTotal.toFixed(2)}`;
+    document.getElementById('summary-total').textContent = `$${discountedTotal.toFixed(2)}`;
+
+    if (savings > 0) {
+      if (dealEl) { dealEl.classList.add('visible'); }
+      if (dealSavings) dealSavings.textContent = `$${savings.toFixed(2)}`;
+      if (discountRow) { discountRow.style.display = 'flex'; document.getElementById('summary-discount').textContent = `-$${savings.toFixed(2)}`; }
+    } else {
+      if (dealEl) dealEl.classList.remove('visible');
+      if (discountRow) discountRow.style.display = 'none';
+    }
+
+    // Sync qty displays on menu cards
+    Object.entries(cart).forEach(([id, item]) => {
+      const d = document.getElementById(`qty-${id}`);
+      if (d) d.textContent = item.qty;
+    });
+    // Zero out cards not in cart
+    document.querySelectorAll('[data-drink-id]').forEach(card => {
+      const id = card.dataset.drinkId;
+      if (!cart[id]) {
+        const d = document.getElementById(`qty-${id}`);
+        if (d) d.textContent = 0;
+      }
+    });
+  }
+
+  function removeItem(id) {
+    const name = cart[id] ? cart[id].name : id;
+    delete cart[id];
+    saveCart();
+    updateCartUI();
+    showToast(`Removed ${name}`);
+  }
+
+  // ============================================================
+  // CART PANEL OPEN/CLOSE
+  // ============================================================
+  function openCart() {
+    document.getElementById('cart-overlay').classList.add('open');
+    document.getElementById('cart-panel').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateCartUI();
+  }
+
+  function closeCart() {
+    document.getElementById('cart-overlay').classList.remove('open');
+    document.getElementById('cart-panel').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ============================================================
+  // CHECKOUT
+  // ============================================================
+  let selectedFulfillment = 'delivery'; // online orders are delivery only
+  let selectedPayment = null;
+
+  function openCheckout() {
+    const totalQty = getTotalQty();
+    if (totalQty === 0) { showToast('Add drinks to your cart first!'); return; }
+    closeCart();
+    renderCheckoutSummary();
+    document.getElementById('checkout-screen').classList.add('active');
+    window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-screen').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function setDelivery(type) {
+    selectedFulfillment = type; // always 'delivery' for online orders
+    renderCheckoutSummary();
+  }
+
+  function setPayment(type) {
+    selectedPayment = type;
+    ['cashapp','venmo','paypal','zelle'].forEach(t => {
+      const el = document.getElementById(`pay-${t}`);
+      if (el) el.classList.toggle('selected', t === type);
+      const radio = document.getElementById(`radio-${t}`);
+      if (radio) radio.checked = t === type;
+    });
+    document.getElementById('err-payment').style.display = 'none';
+  }
+
+  function renderCheckoutSummary() {
+    const totalQty = getTotalQty();
+    const discountedTotal = calcTotal(totalQty);
+    const regularTotal = getRegularTotal(totalQty);
+    const savings = regularTotal - discountedTotal;
+    const deliveryFee = selectedFulfillment === 'delivery' ? 5.99 : 0;
+    const grandTotal = discountedTotal + deliveryFee;
+
+    let itemsHTML = '';
+    Object.values(cart).forEach(item => {
+      itemsHTML += `
+        <div class="checkout-order-item">
+          <span>${item.name} × ${item.qty}</span>
+          <span>$${(item.qty * PRICE_SINGLE).toFixed(2)}</span>
+        </div>`;
+    });
+
+    let totalsHTML = `
+      <div class="checkout-total-row"><span class="lbl">Subtotal (${totalQty} drink${totalQty !== 1 ? 's' : ''})</span><span class="val">$${regularTotal.toFixed(2)}</span></div>`;
+    if (savings > 0) {
+      totalsHTML += `<div class="checkout-total-row" style="color:#6DCA71"><span class="lbl">3-for-$21 Discount</span><span class="val">-$${savings.toFixed(2)}</span></div>`;
+    }
+    if (deliveryFee > 0) {
+      totalsHTML += `<div class="checkout-total-row"><span class="lbl">Delivery Fee</span><span class="val">$${deliveryFee.toFixed(2)}</span></div>`;
+    }
+    totalsHTML += `<div class="checkout-total-row final"><span class="lbl">Total Due</span><span class="val">$${grandTotal.toFixed(2)}</span></div>`;
+
+    document.getElementById('checkout-order-items').innerHTML = itemsHTML;
+    document.getElementById('checkout-order-totals').innerHTML = totalsHTML;
+  }
+
+  function completeOrder() {
+    // Validate fields
+    let valid = true;
+
+    const name = document.getElementById('full-name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    const nameErr = document.getElementById('err-name');
+    const emailErr = document.getElementById('err-email');
+    const phoneErr = document.getElementById('err-phone');
+
+
+    if (!name) { nameErr.style.display = 'block'; document.getElementById('full-name').classList.add('error'); valid = false; }
+    else { nameErr.style.display = 'none'; document.getElementById('full-name').classList.remove('error'); }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) { emailErr.style.display = 'block'; document.getElementById('email').classList.add('error'); valid = false; }
+    else { emailErr.style.display = 'none'; document.getElementById('email').classList.remove('error'); }
+
+    if (!phone) { phoneErr.style.display = 'block'; document.getElementById('phone').classList.add('error'); valid = false; }
+    else { phoneErr.style.display = 'none'; document.getElementById('phone').classList.remove('error'); }
+
+    // Delivery address always required (online = delivery only)
+    ['street','city','state','zip'].forEach(f => {
+      const val = document.getElementById(f).value.trim();
+      const err = document.getElementById(`err-${f}`);
+      if (!val) { err.style.display = 'block'; document.getElementById(f).classList.add('error'); valid = false; }
+      else { err.style.display = 'none'; document.getElementById(f).classList.remove('error'); }
+    });
+
+    const payErr = document.getElementById('err-payment');
+    if (!selectedPayment) { payErr.style.display = 'block'; valid = false; }
+    else { payErr.style.display = 'none'; }
+
+    if (!valid) {
+      showToast('Please fill in all required fields.');
+      return;
+    }
+
+    // Build order totals
+    const totalQty = getTotalQty();
+    const discountedTotal = calcTotal(totalQty);
+    const deliveryFee = 5.99; // always delivery for online orders
+    const grandTotal = discountedTotal + deliveryFee;
+    const orderNum = 'RR-' + Math.floor(100000 + Math.random() * 900000);
+
+    // Get it from: squareup.com → Online → Payment Links → Create Link
+
+
+    // TODO: Replace with Sean's Formspree endpoint (formspree.io → New Form → copy endpoint)
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzlqbjk';
+
+    // ── Payment instructions ─────────────────────────────────────
+    const paymentInfo = {
+      cashapp: { method: 'Cash App',  handle: '$RawRemedease',          note: 'Search $RawRemedease on Cash App' },
+      venmo:   { method: 'Venmo',     handle: '@Sean-Smith-RR',          note: 'Search @Sean-Smith-RR on Venmo' },
+      paypal:  { method: 'PayPal',    handle: '@RawRemedease',           note: 'Send to @RawRemedease or sean@rawremedease.com on PayPal' },
+      zelle:   { method: 'Zelle',     handle: 'sean@rawremedease.com',   note: 'Send via Zelle to sean@rawremedease.com' }
+    };
+
+    const info = paymentInfo[selectedPayment];
+    document.getElementById('modal-title').textContent = 'Order Received! 🌿';
+    document.getElementById('modal-subtitle').textContent = 'Send your payment using the details below to confirm your order.';
+    document.getElementById('modal-order-num').textContent = `Order # ${orderNum}`;
+    document.getElementById('modal-pay-method').textContent = info.method;
+    document.getElementById('modal-pay-handle').textContent = info.handle;
+    document.getElementById('modal-amount').textContent = `$${grandTotal.toFixed(2)}`;
+    document.getElementById('modal-amount-note').textContent = 'Includes $5.99 delivery fee';
+    document.getElementById('modal-ref-note').innerHTML = `
+      <strong>Important:</strong> Send exactly <strong>$${grandTotal.toFixed(2)}</strong> and include <strong>"${orderNum}"</strong> as your payment note/reference.<br/>
+      <span style="color:var(--text-muted);margin-top:4px;display:block;">${info.note}.</span>
+    `;
+    document.getElementById('modal-backdrop').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-backdrop').classList.remove('open');
+    document.getElementById('checkout-screen').classList.remove('active');
+    document.body.style.overflow = '';
+    // Reset form
+    ['full-name','email','phone','street','city','state','zip'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.value = ''; el.classList.remove('error'); }
+    });
+    selectedFulfillment = null;
+    selectedPayment = null;
+    selectedPayment = null;
+    ['cashapp','venmo','paypal','zelle'].forEach(id => { const el = document.getElementById(`pay-${id}`); if (el) el.classList.remove('selected'); });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ============================================================
+  // MOBILE NAV TOGGLE
+  // ============================================================
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  mobileNav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // ============================================================
+  // TOAST NOTIFICATIONS
+  // ============================================================
+  function showToast(msg, type) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast${type ? ' ' + type : ''}`;
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.animation = 'toastOut 300ms ease forwards';
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
+  }
+
+  // ============================================================
+  // SCROLL FADE ANIMATIONS
+  // ============================================================
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 80}ms`;
+    observer.observe(el);
+  });
+
+  // ============================================================
+  // KEYBOARD: ESC closes modals
+  // ============================================================
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('modal-backdrop').classList.contains('open')) { closeModal(); }
+      else if (document.getElementById('checkout-screen').classList.contains('active')) { closeCheckout(); }
+      else { closeCart(); }
+    }
+  });
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  updateCartUI();
+
+  // Watermelon photo slideshow
+  (function() {
+    const slides = document.querySelectorAll('.wm-slide');
+    if (slides.length < 2) return;
+    let current = 0;
+    setInterval(() => {
+      slides[current].style.opacity = '0';
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = '1';
+    }, 3000);
+  })();
+
+</script>
+</body>
+</html>
