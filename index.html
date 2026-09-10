@@ -2007,22 +2007,6 @@
     <div class="form-section">
       <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">Select how you'll send payment after placing your order.</p>
       <div class="payment-options" role="radiogroup" aria-label="Choose payment method">
-        <label class="payment-option" id="pay-cashapp" onclick="setPayment('cashapp')">
-          <input type="radio" name="payment" value="cashapp" id="radio-cashapp" />
-          <div class="payment-icon" aria-hidden="true">💵</div>
-          <div>
-            <div class="payment-name">Cash App</div>
-            <div class="payment-handle">$RawRemedease</div>
-          </div>
-        </label>
-        <label class="payment-option" id="pay-venmo" onclick="setPayment('venmo')">
-          <input type="radio" name="payment" value="venmo" id="radio-venmo" />
-          <div class="payment-icon" aria-hidden="true">💸</div>
-          <div>
-            <div class="payment-name">Venmo</div>
-            <div class="payment-handle">@Sean-Smith-RR</div>
-          </div>
-        </label>
         <label class="payment-option" id="pay-paypal" onclick="setPayment('paypal')">
           <input type="radio" name="payment" value="paypal" id="radio-paypal" />
           <div class="payment-icon" aria-hidden="true">💙</div>
@@ -2031,13 +2015,12 @@
             <div class="payment-handle">@RawRemedease</div>
           </div>
         </label>
-        <label class="payment-option" id="pay-zelle" onclick="setPayment('zelle')">
-          <input type="radio" name="payment" value="zelle" id="radio-zelle" />
-          <div class="payment-icon" aria-hidden="true">🟣</div>
+        <label class="payment-option" id="pay-venmo" onclick="setPayment('venmo')">
+          <input type="radio" name="payment" value="venmo" id="radio-venmo" />
+          <div class="payment-icon" aria-hidden="true">💸</div>
           <div>
-            <div class="payment-name">Zelle</div>
-            <!-- TODO: Add Sean's Zelle phone number or email -->
-            <div class="payment-handle">(202) 812-6985</div>
+            <div class="payment-name">Venmo</div>
+            <div class="payment-handle">@Sean-Smith-RR</div>
           </div>
         </label>
       </div>
@@ -2069,8 +2052,8 @@
 
     <div class="payment-instruction-box">
       <div class="payment-instruction-label">Payment Method</div>
-      <div class="payment-instruction-method" id="modal-pay-method">Cash App</div>
-      <div class="payment-instruction-handle" id="modal-pay-handle">$RawRemedease</div>
+      <div class="payment-instruction-method" id="modal-pay-method">PayPal</div>
+      <div class="payment-instruction-handle" id="modal-pay-handle">@RawRemedease</div>
       <div class="payment-amount-box">
         <div class="payment-amount-label">Amount Due</div>
         <div class="payment-amount-value" id="modal-amount">$0.00</div>
@@ -2295,7 +2278,7 @@
 
   function setPayment(type) {
     selectedPayment = type;
-    ['cashapp','venmo','paypal','zelle'].forEach(t => {
+    ['paypal','venmo'].forEach(t => {
       const el = document.getElementById(`pay-${t}`);
       if (el) el.classList.toggle('selected', t === type);
       const radio = document.getElementById(`radio-${t}`);
@@ -2395,13 +2378,11 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
     // ── Payment info ─────────────────────────────────────────────
     const PAYPAL_LINK  = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
     const VENMO_LINK   = 'https://venmo.com/Sean-Smith-RR?txn=pay&amount=' + grandTotal.toFixed(2) + '&note=' + encodeURIComponent(orderNum);
-    const CASHAPP_LINK = 'https://cash.app/$RawRemedease/' + grandTotal.toFixed(2);
 
     const paymentInfo = {
       paypal:  { method: 'PayPal',   handle: '@RawRemedease',      link: PAYPAL_LINK,  note: 'A PayPal payment page has opened — send the exact amount shown.' },
       venmo:   { method: 'Venmo',    handle: '@Sean-Smith-RR',     link: VENMO_LINK,   note: 'Venmo has opened — confirm the amount and send.' },
-      cashapp: { method: 'Cash App', handle: '$RawRemedease',      link: CASHAPP_LINK, note: 'Cash App has opened — confirm the amount and send.' },
-      zelle:   { method: 'Zelle',    handle: '(202) 812-6985',     link: null,         note: 'Open your bank's Zelle and send to (202) 812-6985.' }
+
     };
 
     const info = paymentInfo[selectedPayment];
@@ -2433,7 +2414,7 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
       btn.disabled = false;
       btn.innerHTML = 'Complete Order 🌿';
 
-      // ── Open payment app (except Zelle) ──────────────────────
+      // ── Open payment app ──────────────────────────────────────
       if (info.link) {
         window.open(info.link, '_blank');
       }
@@ -2442,7 +2423,7 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
       document.getElementById('modal-title').textContent      = info.link ? 'Almost Done! 🌿' : 'Order Received! 🌿';
       document.getElementById('modal-subtitle').textContent   = info.link
         ? 'Your payment app has opened. Complete the payment there to confirm your order.'
-        : 'Send payment via Zelle to complete your order.';
+        : 'Complete your payment to confirm your order.';
       document.getElementById('modal-order-num').textContent  = 'Order # ' + orderNum;
       document.getElementById('modal-pay-method').textContent = info.method;
       document.getElementById('modal-pay-handle').textContent = info.handle;
@@ -2473,7 +2454,7 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
     selectedFulfillment = null;
     selectedPayment = null;
     selectedPayment = null;
-    ['cashapp','venmo','paypal','zelle'].forEach(id => { const el = document.getElementById(`pay-${id}`); if (el) el.classList.remove('selected'); });
+    ['paypal','venmo'].forEach(id => { const el = document.getElementById(`pay-${id}`); if (el) el.classList.remove('selected'); });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
