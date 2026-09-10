@@ -2336,80 +2336,130 @@
   }
 
   function completeOrder() {
-    // Validate fields
+    // ── Validate all fields ──────────────────────────────────────
     let valid = true;
 
-    const name = document.getElementById('full-name').value.trim();
+    const name  = document.getElementById('full-name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
 
-    const nameErr = document.getElementById('err-name');
+    const nameErr  = document.getElementById('err-name');
     const emailErr = document.getElementById('err-email');
     const phoneErr = document.getElementById('err-phone');
+    const payErr   = document.getElementById('err-payment');
 
+    if (!name)  { nameErr.style.display  = 'block'; document.getElementById('full-name').classList.add('error'); valid = false; }
+    else        { nameErr.style.display  = 'none';  document.getElementById('full-name').classList.remove('error'); }
 
-    if (!name) { nameErr.style.display = 'block'; document.getElementById('full-name').classList.add('error'); valid = false; }
-    else { nameErr.style.display = 'none'; document.getElementById('full-name').classList.remove('error'); }
-
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) { emailErr.style.display = 'block'; document.getElementById('email').classList.add('error'); valid = false; }
-    else { emailErr.style.display = 'none'; document.getElementById('email').classList.remove('error'); }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailErr.style.display = 'block'; document.getElementById('email').classList.add('error'); valid = false;
+    } else { emailErr.style.display = 'none'; document.getElementById('email').classList.remove('error'); }
 
     if (!phone) { phoneErr.style.display = 'block'; document.getElementById('phone').classList.add('error'); valid = false; }
-    else { phoneErr.style.display = 'none'; document.getElementById('phone').classList.remove('error'); }
+    else        { phoneErr.style.display = 'none';  document.getElementById('phone').classList.remove('error'); }
 
-    // Delivery address always required (online = delivery only)
     ['street','city','state','zip'].forEach(f => {
       const val = document.getElementById(f).value.trim();
-      const err = document.getElementById(`err-${f}`);
+      const err = document.getElementById('err-' + f);
       if (!val) { err.style.display = 'block'; document.getElementById(f).classList.add('error'); valid = false; }
-      else { err.style.display = 'none'; document.getElementById(f).classList.remove('error'); }
+      else      { err.style.display = 'none';  document.getElementById(f).classList.remove('error'); }
     });
 
-    const payErr = document.getElementById('err-payment');
     if (!selectedPayment) { payErr.style.display = 'block'; valid = false; }
-    else { payErr.style.display = 'none'; }
+    else                  { payErr.style.display = 'none'; }
 
-    if (!valid) {
-      showToast('Please fill in all required fields.');
-      return;
-    }
+    if (!valid) { showToast('Please fill in all required fields.'); return; }
 
-    // Build order totals
-    const totalQty = getTotalQty();
+    // ── Build order ──────────────────────────────────────────────
+    const totalQty        = getTotalQty();
     const discountedTotal = calcTotal(totalQty);
-    const deliveryFee = 5.99; // always delivery for online orders
-    const grandTotal = discountedTotal + deliveryFee;
-    const orderNum = 'RR-' + Math.floor(100000 + Math.random() * 900000);
+    const deliveryFee     = 5.99;
+    const grandTotal      = discountedTotal + deliveryFee;
+    const orderNum        = 'RR-' + Math.floor(100000 + Math.random() * 900000);
 
-    // Get it from: squareup.com → Online → Payment Links → Create Link
+    const street = document.getElementById('street').value.trim();
+    const city   = document.getElementById('city').value.trim();
+    const state  = document.getElementById('state').value.trim();
+    const zip    = document.getElementById('zip').value.trim();
+    const fullAddress = street + ', ' + city + ', ' + state + ' ' + zip;
 
+    const itemLines = Object.values(cart).map(item =>
+      item.name + ' x' + item.qty + ' — $' + (item.qty * PRICE_SINGLE).toFixed(2)
+    ).join('
+');
 
-    // TODO: Replace with Sean's Formspree endpoint (formspree.io → New Form → copy endpoint)
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzlqbjk';
+    const savings = getRegularTotal(totalQty) - discountedTotal;
+    const discountLine = savings > 0 ? '
+Discount (3 for $21): -$' + savings.toFixed(2) : '';
 
-    // ── Payment instructions ─────────────────────────────────────
+    // ── Payment info ─────────────────────────────────────────────
+    const PAYPAL_LINK  = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
+    const VENMO_LINK   = 'https://venmo.com/Sean-Smith-RR?txn=pay&amount=' + grandTotal.toFixed(2) + '&note=' + encodeURIComponent(orderNum);
+    const CASHAPP_LINK = 'https://cash.app/$RawRemedease/' + grandTotal.toFixed(2);
+
     const paymentInfo = {
-      cashapp: { method: 'Cash App',  handle: '$RawRemedease',          note: 'Search $RawRemedease on Cash App' },
-      venmo:   { method: 'Venmo',     handle: '@Sean-Smith-RR',          note: 'Search @Sean-Smith-RR on Venmo' },
-      paypal:  { method: 'PayPal',    handle: '@RawRemedease',           note: 'Send to @RawRemedease or sean@rawremedease.com on PayPal' },
-      zelle:   { method: 'Zelle',     handle: '(202) 812-6985',          note: 'Send via Zelle to (202) 812-6985' }
+      paypal:  { method: 'PayPal',   handle: '@RawRemedease',      link: PAYPAL_LINK,  note: 'A PayPal payment page has opened — send the exact amount shown.' },
+      venmo:   { method: 'Venmo',    handle: '@Sean-Smith-RR',     link: VENMO_LINK,   note: 'Venmo has opened — confirm the amount and send.' },
+      cashapp: { method: 'Cash App', handle: '$RawRemedease',      link: CASHAPP_LINK, note: 'Cash App has opened — confirm the amount and send.' },
+      zelle:   { method: 'Zelle',    handle: '(202) 812-6985',     link: null,         note: 'Open your bank's Zelle and send to (202) 812-6985.' }
     };
 
     const info = paymentInfo[selectedPayment];
-    document.getElementById('modal-title').textContent = 'Order Received! 🌿';
-    document.getElementById('modal-subtitle').textContent = 'Send your payment using the details below to confirm your order.';
-    document.getElementById('modal-order-num').textContent = `Order # ${orderNum}`;
-    document.getElementById('modal-pay-method').textContent = info.method;
-    document.getElementById('modal-pay-handle').textContent = info.handle;
-    document.getElementById('modal-amount').textContent = `$${grandTotal.toFixed(2)}`;
-    document.getElementById('modal-amount-note').textContent = 'Includes $5.99 delivery fee';
-    document.getElementById('modal-ref-note').innerHTML = `
-      <strong>Important:</strong> Send exactly <strong>$${grandTotal.toFixed(2)}</strong> and include <strong>"${orderNum}"</strong> as your payment note/reference.<br/>
-      <span style="color:var(--text-muted);margin-top:4px;display:block;">${info.note}.</span>
-    `;
-    document.getElementById('modal-backdrop').classList.add('open');
+
+    // ── Disable button, show sending state ───────────────────────
+    const btn = document.getElementById('complete-order-btn');
+    btn.disabled = true;
+    btn.innerHTML = 'Sending order... ⏳';
+
+    // ── Send order email to Sean via Formspree ───────────────────
+    fetch('https://formspree.io/f/xvzlqbjk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject:         'New Order ' + orderNum + ' — Raw Remedease',
+        order_number:     orderNum,
+        customer_name:    name,
+        customer_email:   email,
+        customer_phone:   phone,
+        delivery_address: fullAddress,
+        items_ordered:    itemLines,
+        subtotal:         '$' + discountedTotal.toFixed(2) + discountLine,
+        delivery_fee:     '$5.99',
+        total_due:        '$' + grandTotal.toFixed(2),
+        payment_method:   info.method
+      })
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerHTML = 'Complete Order 🌿';
+
+      // ── Open payment app (except Zelle) ──────────────────────
+      if (info.link) {
+        window.open(info.link, '_blank');
+      }
+
+      // ── Show confirmation modal ───────────────────────────────
+      document.getElementById('modal-title').textContent      = info.link ? 'Almost Done! 🌿' : 'Order Received! 🌿';
+      document.getElementById('modal-subtitle').textContent   = info.link
+        ? 'Your payment app has opened. Complete the payment there to confirm your order.'
+        : 'Send payment via Zelle to complete your order.';
+      document.getElementById('modal-order-num').textContent  = 'Order # ' + orderNum;
+      document.getElementById('modal-pay-method').textContent = info.method;
+      document.getElementById('modal-pay-handle').textContent = info.handle;
+      document.getElementById('modal-amount').textContent     = '$' + grandTotal.toFixed(2);
+      document.getElementById('modal-amount-note').textContent = 'Includes $5.99 delivery fee';
+      document.getElementById('modal-ref-note').innerHTML     =
+        '<strong>Important:</strong> Include <strong>"' + orderNum + '"</strong> as your payment note so Sean can match your order.<br/>' +
+        '<span style="color:var(--text-muted);margin-top:4px;display:block;">' + info.note + '</span>' +
+        (info.link ? '<br/><span style="color:var(--text-muted);font-size:var(--text-xs);">App didn't open? <a href="' + info.link + '" target="_blank" rel="noopener" style="color:var(--blue-light);text-decoration:underline;">Click here to pay →</a></span>' : '');
+      document.getElementById('modal-backdrop').classList.add('open');
+
+      // ── Clear cart ────────────────────────────────────────────
+      cart = {};
+      updateCartUI();
+    });
   }
+
 
   function closeModal() {
     document.getElementById('modal-backdrop').classList.remove('open');
