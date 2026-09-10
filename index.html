@@ -979,7 +979,7 @@
       position: fixed;
       inset: 0;
       z-index: 300;
-      background: var(--black);
+      background: #fff;
       overflow-y: auto;
       padding: var(--space-8) var(--space-6);
     }
@@ -2381,8 +2381,7 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
 
     const paymentInfo = {
       paypal:  { method: 'PayPal',   handle: '@RawRemedease',      link: PAYPAL_LINK,  note: 'A PayPal payment page has opened — send the exact amount shown.' },
-      venmo:   { method: 'Venmo',    handle: '@Sean-Smith-RR',     link: VENMO_LINK,   note: 'Venmo has opened — confirm the amount and send.' },
-
+      venmo:   { method: 'Venmo',    handle: '@Sean-Smith-RR',     link: VENMO_LINK,   note: 'Venmo has opened — confirm the amount and send.' }
     };
 
     const info = paymentInfo[selectedPayment];
