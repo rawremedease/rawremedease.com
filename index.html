@@ -2070,6 +2070,19 @@
   </div>
 </div>
 
+
+<!-- Order Confirmation Banner -->
+<div id="order-confirm-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:500; background:#1a7a4a; color:#fff; padding:14px 24px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.15); animation: slideDown 0.4s ease;">
+  <div style="max-width:640px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+    <span style="font-size:20px;">✅</span>
+    <span id="banner-text" style="font-weight:600; font-size:15px;">Order placed! Complete your payment to confirm delivery.</span>
+    <button onclick="document.getElementById('order-confirm-banner').style.display='none'" style="background:rgba(255,255,255,0.25); border:none; color:#fff; border-radius:20px; padding:4px 12px; cursor:pointer; font-size:13px; margin-left:8px;">✕ Dismiss</button>
+  </div>
+</div>
+<style>
+  @keyframes slideDown { from { transform: translateY(-100%); opacity:0; } to { transform: translateY(0); opacity:1; } }
+</style>
+
 <!-- Toast container -->
 <div id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
 
@@ -2443,6 +2456,16 @@
     document.getElementById('modal-backdrop').classList.remove('open');
     document.getElementById('checkout-screen').classList.remove('active');
     document.body.style.overflow = '';
+
+    // Show order confirmation banner on the main page
+    const banner = document.getElementById('order-confirm-banner');
+    const orderNum = document.getElementById('modal-order-num').textContent;
+    const payMethod = document.getElementById('modal-pay-method').textContent;
+    document.getElementById('banner-text').textContent =
+      'Order placed! Complete your ' + payMethod + ' payment to confirm delivery. (' + orderNum + ')';
+    banner.style.display = 'block';
+    // Auto-dismiss after 30 seconds
+    setTimeout(() => { banner.style.display = 'none'; }, 30000);
     // Reset form
     ['full-name','email','phone','street','city','state','zip'].forEach(id => {
       const el = document.getElementById(id);
