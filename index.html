@@ -1,50 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raw Remedease – Natural RemedEASE</title>
-  <meta name="description" content="Raw Remedease — plant-based raw juices, teas, and eats for your natural wellness. Founded April 2024 by Sean Smith." />
+  <title>Raw Remedease — Natural Raw Juice · Washington D.C.</title>
+  <meta name="description" content="Raw Remedease — Black-owned raw juice business from Washington D.C. Founded by Sean Smith. Delivery within 40 miles of Waldorf, MD. Also available in-store at Milk & Honey." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     /* ============================================================
-       DESIGN TOKENS — Raw Remedease Brand System
-       Primary: Deep black bg, white text
-       Accents: Brand Red #C41E3A, Brand Blue #1B5FA8, Brand Green #2E7D32
+       DESIGN TOKENS — DARK THEME
     ============================================================ */
     :root {
-      --red: #C41E3A;
-      --red-light: #E8334F;
-      --red-dark: #8B1429;
-      --blue: #1B5FA8;
-      --blue-light: #2E7BC4;
-      --blue-dark: #0E3D6B;
-      --green: #2E7D32;
-      --green-light: #43A047;
-      --green-dark: #1B5E20;
-      --black: #FFFFFF;
-      --surface: #F7F7F5;
-      --surface-2: #EFEFEC;
-      --surface-3: #E4E4E0;
-      --surface-4: #D8D8D3;
-      --border: #DEDDD8;
-      --text: #111111;
-      --text-muted: #555554;
-      --text-faint: #AAAAAA;
-      --white: #FFFFFF;
+      --bg:          #0A0A0A;
+      --bg-2:        #111111;
+      --bg-3:        #181818;
+      --bg-4:        #222222;
+      --border:      rgba(255,255,255,0.08);
+      --border-mid:  rgba(255,255,255,0.14);
 
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Work Sans', 'Helvetica Neue', sans-serif;
+      --text:        #F2F0EB;
+      --text-muted:  #888880;
+      --text-faint:  #444440;
 
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --green:       #3DBB6B;
+      --green-dim:   rgba(61,187,107,0.12);
+      --green-glow:  rgba(61,187,107,0.25);
+      --red:         #E84057;
+      --red-dim:     rgba(232,64,87,0.12);
+      --gold:        #D4A832;
+      --gold-dim:    rgba(212,168,50,0.12);
+
+      --font-display: 'Bebas Neue', 'Impact', sans-serif;
+      --font-serif:   'DM Serif Display', Georgia, serif;
+      --font-body:    'DM Sans', 'Helvetica Neue', sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.375rem;
+      --text-2xl:  1.875rem;
+      --text-3xl:  2.5rem;
+      --text-hero: clamp(3.5rem, 8vw, 7rem);
 
       --space-1: 0.25rem;
       --space-2: 0.5rem;
@@ -59,347 +58,272 @@
       --space-20: 5rem;
       --space-24: 6rem;
 
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
-      --radius-xl: 1rem;
-      --radius-2xl: 1.5rem;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
       --radius-full: 9999px;
 
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-      --shadow-red: 0 4px 20px rgba(196, 30, 58, 0.3);
-      --shadow-green: 0 4px 20px rgba(46, 125, 50, 0.3);
-
-      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
-
-      --content-narrow: 640px;
-      --content-default: 960px;
-      --content-wide: 1200px;
-
-      --header-h: 68px;
+      --transition: 0.2s ease;
+      --transition-slow: 0.45s cubic-bezier(0.16,1,0.3,1);
     }
 
     /* ============================================================
-       BASE RESET
+       RESET & BASE
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-h);
-    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      min-height: 100dvh;
       font-family: var(--font-body);
-      font-size: var(--text-base);
+      background: var(--bg);
       color: var(--text);
-      background-color: var(--black);
-      line-height: 1.65;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    img, picture, video, canvas, svg { display: block; max-width: 100%; }
-    input, button, textarea, select { font: inherit; color: inherit; }
-    h1,h2,h3,h4,h5,h6 { text-wrap: balance; line-height: 1.15; }
-    p, li { text-wrap: pretty; }
-    ul[role="list"], ol[role="list"] { list-style: none; }
-    button { cursor: pointer; background: none; border: none; }
+    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: var(--radius-sm); }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+    input, select, textarea { font-family: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    .section {
+      padding: var(--space-24) 0;
     }
 
     /* ============================================================
-       UTILITY CLASSES
+       NAVIGATION
     ============================================================ */
-    .container { width: 100%; max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); }
-    .container--narrow { max-width: var(--content-narrow); }
-    .container--default { max-width: var(--content-default); }
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
-
-    /* Brand text helpers */
-    .brand-raw   { color: var(--blue); font-family: var(--font-display); }
-    .brand-remed { color: var(--green); font-family: var(--font-display); }
-    .brand-ease  { color: var(--red); font-family: var(--font-display); }
-
-    /* ============================================================
-       HEADER / NAV
-    ============================================================ */
-    .site-header {
+    .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: var(--header-h);
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-    }
-    .header-inner {
+      padding: var(--space-4) var(--space-6);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-4);
-      width: 100%;
-      max-width: var(--content-wide);
-      margin-inline: auto;
-      padding-inline: var(--space-6);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
     }
-    .header-logo {
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: var(--space-3);
-      text-decoration: none;
     }
-    .header-logo-icon { width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
-    .header-logo-text {
+    .nav-logo {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--green);
+    }
+    .nav-wordmark {
       font-family: var(--font-display);
-      font-size: var(--text-lg);
-      line-height: 1;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
     }
-    .header-logo-text .raw { color: var(--blue); }
-    .header-logo-text .remed { color: var(--green); }
-    .header-logo-text .ease { color: var(--red); }
-
-    .header-nav {
+    .nav-wordmark span { color: var(--green); }
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: var(--space-6);
+      gap: var(--space-8);
+      list-style: none;
     }
     .nav-link {
       font-size: var(--text-sm);
       font-weight: 500;
       color: var(--text-muted);
-      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       transition: color var(--transition);
-      padding-block: var(--space-1);
-      position: relative;
     }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 2px;
-      background: var(--green);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-      border-radius: var(--radius-full);
-    }
-    .nav-link:hover { color: var(--red); }
-    .nav-link:hover::after { transform: scaleX(1); }
-
-    .cart-btn {
-      position: relative;
+    .nav-link:hover { color: var(--text); }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .nav-cart-btn {
       display: flex;
       align-items: center;
       gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
-      background: var(--red);
-      color: var(--white);
-      border-radius: var(--radius-full);
-      font-size: var(--text-sm);
+      background: var(--green);
+      color: #000;
       font-weight: 600;
+      font-size: var(--text-sm);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
       transition: background var(--transition), transform var(--transition);
     }
-    .cart-btn:hover { background: var(--red-light); transform: translateY(-1px); }
-    .cart-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 20px;
-      height: 20px;
-      background: var(--white);
-      color: var(--red);
-      border-radius: var(--radius-full);
-      font-size: 11px;
+    .nav-cart-btn:hover { background: #50d47e; transform: translateY(-1px); }
+    #nav-cart-count {
+      background: #000;
+      color: var(--green);
+      font-size: 10px;
       font-weight: 700;
-      padding-inline: 4px;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      min-width: 18px;
+      text-align: center;
     }
-    .cart-count.hidden { display: none; }
-
     .hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
-      padding: var(--space-2);
+      background: none;
+      padding: 4px;
     }
     .hamburger span {
       display: block;
-      width: 22px;
-      height: 2px;
+      width: 22px; height: 2px;
       background: var(--text);
       border-radius: 2px;
-      transition: transform var(--transition), opacity var(--transition);
+      transition: var(--transition);
     }
-
-    @media (max-width: 720px) {
-      .header-nav { display: none; }
-      .header-nav.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: var(--header-h); left: 0; right: 0;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: var(--space-6);
-        gap: var(--space-4);
-        z-index: 99;
-      }
-      .hamburger { display: flex; }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 65px; left: 0; right: 0;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: var(--space-4) var(--space-6) var(--space-6);
+      flex-direction: column;
+      gap: var(--space-4);
     }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { font-size: var(--text-base); color: var(--text); }
+    .mobile-nav .nav-cart-btn { align-self: flex-start; }
 
     /* ============================================================
-       MAIN LAYOUT
-    ============================================================ */
-    main { padding-top: var(--header-h); }
-
-    /* ============================================================
-       SECTION SHARED
-    ============================================================ */
-    .section {
-      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
-    }
-    .section-label {
-      font-size: var(--text-xs);
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: var(--space-3);
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      color: var(--text);
-      margin-bottom: var(--space-6);
-    }
-    .section-divider {
-      width: 60px;
-      height: 3px;
-      border-radius: var(--radius-full);
-      margin-bottom: var(--space-8);
-    }
-
-    /* ============================================================
-       HERO SECTION
+       HERO
     ============================================================ */
     .hero {
-      min-height: calc(100svh - var(--header-h));
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 120px var(--space-6) var(--space-16);
       position: relative;
       overflow: hidden;
-      padding-block: var(--space-16) var(--space-12);
     }
-    .hero-bg-pattern {
+    .hero-bg {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(27,95,168,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(46,125,50,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(196,30,58,0.05) 0%, transparent 50%);
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(61,187,107,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,168,50,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-logo-wrap {
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       margin-bottom: var(--space-8);
     }
-    .hero-logo-ring {
-      position: absolute;
+    .hero-logo {
+      width: 140px; height: 140px;
       border-radius: 50%;
-      animation: spinRing 30s linear infinite;
+      object-fit: cover;
+      border: 2px solid rgba(61,187,107,0.4);
+      box-shadow:
+        0 0 60px rgba(61,187,107,0.2),
+        0 0 120px rgba(61,187,107,0.08);
     }
-    @keyframes spinRing {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .hero-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
     }
-    .hero-logo-svg { width: clamp(160px, 26vw, 220px); height: clamp(160px, 26vw, 220px); border-radius: 50%; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid;
+    }
+    .badge-green { background: var(--green-dim); border-color: rgba(61,187,107,0.3); color: var(--green); }
+    .badge-red   { background: var(--red-dim);   border-color: rgba(232,64,87,0.3);  color: var(--red); }
+    .badge-gold  { background: var(--gold-dim);  border-color: rgba(212,168,50,0.3); color: var(--gold); }
 
     .hero-eyebrow {
-      font-size: var(--text-xs);
-      letter-spacing: 0.18em;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: var(--space-4);
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      line-height: 1.05;
-      margin-bottom: var(--space-4);
+      font-size: var(--text-hero);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-6);
     }
+    .hero-title .t-green { color: var(--green); }
     .hero-subtitle {
-      font-size: var(--text-lg);
+      font-size: var(--text-xl);
+      font-family: var(--font-serif);
+      font-style: italic;
       color: var(--text-muted);
-      max-width: 560px;
-      margin-inline: auto;
-      margin-bottom: var(--space-10);
+      max-width: 520px;
+      margin: 0 auto var(--space-10);
+      line-height: 1.4;
     }
-    .hero-cta-group {
+    .hero-ctas {
       display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      justify-content: center;
-    }
-    .btn {
-      display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-full);
-      font-size: var(--text-sm);
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      border: 2px solid transparent;
-      cursor: pointer;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
     }
-    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: var(--green);
-      color: var(--white);
-      box-shadow: var(--shadow-green);
+      color: #000;
+      font-weight: 700;
+      font-size: var(--text-base);
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
     }
-    .btn-primary:hover { background: var(--green-light); box-shadow: 0 6px 24px rgba(46,125,50,0.45); }
-    .btn-secondary {
+    .btn-primary:hover {
+      background: #50d47e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,187,107,0.35);
+    }
+    .btn-outline {
       background: transparent;
       color: var(--text);
-      border-color: var(--border);
+      font-weight: 600;
+      font-size: var(--text-base);
+      padding: 13px 32px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border-mid);
+      letter-spacing: 0.02em;
+      transition: border-color var(--transition), background var(--transition);
     }
-    .btn-secondary:hover { border-color: var(--text-muted); background: var(--surface-2); }
-    .btn-red {
-      background: var(--red);
-      color: var(--white);
-      box-shadow: var(--shadow-red);
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.04);
     }
-    .btn-red:hover { background: var(--red-light); box-shadow: 0 6px 24px rgba(196,30,58,0.45); }
-    .btn-blue {
-      background: var(--blue);
-      color: var(--white);
-    }
-    .btn-blue:hover { background: var(--blue-light); }
-    .btn-outline-green {
-      background: transparent;
-      color: var(--green-light);
-      border-color: var(--green);
-    }
-    .btn-outline-green:hover { background: rgba(46,125,50,0.12); }
-    .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--text-base); }
-    .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--text-xs); }
-
-    .hero-scroll-hint {
-      margin-top: var(--space-12);
+    .hero-scroll {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -408,578 +332,396 @@
       font-size: var(--text-xs);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      animation: bounce 2s ease-in-out infinite;
+      animation: bob 2s ease-in-out infinite;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+    .scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--green), transparent);
     }
 
     /* ============================================================
-       OVERVIEW SECTION
+       OVERVIEW / ABOUT
     ============================================================ */
-    .overview-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .overview-section { background: var(--bg-2); }
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: var(--space-3);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      line-height: 1.2;
+      margin-bottom: var(--space-6);
     }
     .overview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
+      gap: var(--space-16);
       align-items: start;
     }
-    @media (max-width: 768px) {
-      .overview-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-    }
-
-    .overview-mission p {
+    .overview-body p {
       color: var(--text-muted);
-      max-width: 55ch;
       margin-bottom: var(--space-5);
-      font-size: var(--text-base);
+      line-height: 1.75;
     }
-    .mission-pillars {
+    .overview-body strong { color: var(--text); }
+    .pillar-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-3);
+      gap: var(--space-2);
       margin-top: var(--space-6);
     }
     .pillar-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
+      padding: 5px 14px;
       border-radius: var(--radius-full);
       font-size: var(--text-xs);
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
-    .pillar-tag.green { background: rgba(46,125,50,0.15); color: #6DCA71; border: 1px solid rgba(46,125,50,0.3); }
-    .pillar-tag.blue { background: rgba(27,95,168,0.15); color: #5B9FE8; border: 1px solid rgba(27,95,168,0.3); }
-    .pillar-tag.red { background: rgba(196,30,58,0.15); color: #F46B82; border: 1px solid rgba(196,30,58,0.3); }
+    .pillar-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(61,187,107,0.2); }
+    .pillar-red   { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(232,64,87,0.2); }
+    .pillar-gold  { background: var(--gold-dim);  color: var(--gold);  border: 1px solid rgba(212,168,50,0.2); }
 
+    /* Founder card */
     .founder-card {
-      background: var(--surface-2);
+      background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: var(--radius-2xl);
       padding: var(--space-8);
-      position: relative;
-      overflow: hidden;
-    }
-    .founder-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--green), var(--red));
+      text-align: center;
     }
     .founder-avatar {
-      width: 72px;
-      height: 72px;
+      width: 72px; height: 72px;
       border-radius: 50%;
-      background: var(--surface-3);
-      border: 2px solid var(--border);
+      background: linear-gradient(135deg, var(--green), #1a6630);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
-      font-size: var(--text-xl);
-      color: var(--text-muted);
-      margin-bottom: var(--space-4);
-      overflow: hidden;
+      font-size: 2rem;
+      color: #000;
+      margin: 0 auto var(--space-4);
     }
-    .founder-name {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-1);
-    }
-    .founder-title {
-      font-size: var(--text-xs);
-      color: var(--green-light);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: var(--space-5);
-    }
-    .founder-bio {
-      background: var(--surface-3);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4);
-      font-size: var(--text-sm);
-      color: var(--text-faint);
+    .founder-name { font-size: var(--text-xl); font-weight: 600; margin-bottom: 4px; }
+    .founder-role { font-size: var(--text-sm); color: var(--green); font-weight: 500; letter-spacing: 0.06em; margin-bottom: var(--space-5); }
+    .founder-quote {
+      font-family: var(--font-serif);
       font-style: italic;
-      /* TODO: Replace this placeholder with Sean Smith's actual bio */
-    }
-    .founded-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      margin-top: var(--space-5);
-      padding: var(--space-2) var(--space-4);
-      background: rgba(196,30,58,0.12);
-      border: 1px solid rgba(196,30,58,0.25);
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      color: #F46B82;
-      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-size: var(--text-lg);
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-5);
     }
 
-    /* ============================================================
-       DEAL BANNER
-    ============================================================ */
-    .deal-banner {
-      background: linear-gradient(135deg, var(--red-dark) 0%, #8B0000 40%, #5A0000 100%);
-      border-top: 1px solid rgba(196,30,58,0.3);
-      border-bottom: 1px solid rgba(196,30,58,0.3);
-      padding-block: var(--space-6);
-      text-align: center;
-    }
-    .deal-banner-inner {
+    /* Delivery info */
+    .delivery-banner {
+      margin-top: var(--space-8);
+      padding: var(--space-5) var(--space-6);
+      background: var(--green-dim);
+      border: 1px solid rgba(61,187,107,0.2);
+      border-radius: var(--radius-xl);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: var(--space-4) var(--space-8);
+      align-items: flex-start;
+      gap: var(--space-4);
     }
-    .deal-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .deal-price {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      color: var(--white);
-      font-weight: 700;
-    }
-    .deal-desc {
-      font-size: var(--text-xs);
-      color: rgba(255,255,255,0.7);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .deal-separator {
-      color: rgba(255,255,255,0.3);
-      font-size: var(--text-xl);
-    }
-    .deal-highlight {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: var(--radius-lg);
-      padding: var(--space-3) var(--space-6);
-      text-align: center;
-    }
-    .deal-highlight strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      color: #FFD700;
-    }
-    .deal-highlight span { font-size: var(--text-xs); color: rgba(255,255,255,0.75); }
+    .delivery-icon { font-size: 28px; flex-shrink: 0; }
+    .delivery-title { font-weight: 600; margin-bottom: 4px; color: var(--green); }
+    .delivery-desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.5; }
 
     /* ============================================================
        MENU SECTION
     ============================================================ */
-    .menu-section { background: var(--black); }
+    .menu-section { background: var(--bg); }
     .menu-header {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+      margin-bottom: var(--space-12);
       flex-wrap: wrap;
       gap: var(--space-4);
-      margin-bottom: var(--space-10);
     }
+    .menu-pricing-note {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-top: var(--space-2);
+    }
+    .menu-pricing-note strong { color: var(--green); }
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-5);
-      align-items: start;
-    }
-    /* All cards same height within each row */
-    .drink-card {
-      height: 100%;
     }
     @media (max-width: 900px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px) { .menu-grid { grid-template-columns: 1fr; } }
 
-    /* Drink Card */
+    /* Drink card */
     .drink-card {
-      background: var(--surface);
+      background: var(--bg-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-2xl);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-      position: relative;
+      transition: border-color var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-slow);
     }
     .drink-card:hover {
+      border-color: rgba(61,187,107,0.3);
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--surface-4);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(61,187,107,0.1);
     }
-    .drink-card.seasonal { border-color: rgba(27,95,168,0.35); }
     .drink-card-image {
       width: 100%;
       height: 220px;
-      background: var(--surface-2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
       overflow: hidden;
-      flex-shrink: 0;
+      position: relative;
+      background: var(--bg-3);
     }
     .drink-card-image img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center;
       display: block;
-      transition: transform 500ms ease;
+      transition: transform 0.5s ease;
     }
-    .drink-card:hover .drink-card-image img {
-      transform: scale(1.05);
-    }
-    /* Watermelon slideshow fills container */
-    .wm-slideshow {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .wm-slide {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      position: absolute;
-      top: 0; left: 0;
-      transition: opacity 1s ease;
-    }
-    .drink-icon-wrap {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: var(--surface-3);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-    .drink-icon-label {
-      font-family: var(--font-display);
-      font-size: 9px;
-      text-align: center;
-      line-height: 1.2;
-      color: var(--text-faint);
-      padding-inline: 8px;
-    }
-    .drink-icon-label .r { color: var(--blue); }
-    .drink-icon-label .g { color: var(--green); }
-    .drink-icon-label .e { color: var(--red); }
-    .seasonal-badge {
-      position: absolute;
-      top: var(--space-3);
-      right: var(--space-3);
-      padding: var(--space-1) var(--space-3);
-      background: var(--blue);
-      color: var(--white);
-      border-radius: var(--radius-full);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+    .drink-card:hover .drink-card-image img { transform: scale(1.04); }
     .drink-card-body {
-      padding: var(--space-5);
+      padding: var(--space-5) var(--space-5) var(--space-3);
       flex: 1;
-      display: flex;
-      flex-direction: column;
     }
     .drink-number {
-      font-size: 10px;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
       letter-spacing: 0.15em;
-      text-transform: uppercase;
       color: var(--text-faint);
       margin-bottom: var(--space-1);
     }
     .drink-name {
-      font-family: var(--font-display);
-      font-size: var(--text-base);
-      font-weight: 700;
-      color: var(--text);
+      font-size: var(--text-lg);
+      font-weight: 600;
       margin-bottom: var(--space-3);
       line-height: 1.2;
     }
     .drink-ingredients {
       font-size: var(--text-xs);
       color: var(--text-muted);
-      flex: 1;
-      line-height: 1.7;
-      margin-bottom: var(--space-4);
-    }
-    .drink-ingredients strong { color: var(--text-faint); display: block; margin-bottom: var(--space-1); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; }
-    .drink-price {
-      font-family: var(--font-display);
-      font-size: var(--text-base);
-      font-weight: 700;
-      color: var(--white);
+      line-height: 1.6;
       margin-bottom: var(--space-3);
     }
+    .drink-ingredients strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+    .drink-price {
+      font-weight: 700;
+      color: var(--green);
+      font-size: var(--text-lg);
+    }
     .drink-card-footer {
+      padding: var(--space-3) var(--space-5) var(--space-5);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-2);
-      padding: var(--space-4) var(--space-5);
-      background: var(--surface-2);
+      gap: var(--space-3);
       border-top: 1px solid var(--border);
+      margin-top: var(--space-3);
     }
     .qty-control {
       display: flex;
       align-items: center;
-      gap: var(--space-2);
+      gap: var(--space-3);
     }
     .qty-btn {
-      width: 30px;
-      height: 30px;
+      width: 32px; height: 32px;
       border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface-3);
+      background: var(--bg-3);
+      border: 1px solid var(--border-mid);
       color: var(--text);
-      font-size: var(--text-base);
+      font-size: var(--text-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
+      line-height: 1;
       transition: background var(--transition), border-color var(--transition);
-      flex-shrink: 0;
     }
-    .qty-btn:hover { background: var(--surface-4); border-color: var(--text-muted); }
+    .qty-btn:hover { background: var(--bg-4); border-color: var(--text-muted); }
     .qty-display {
-      min-width: 24px;
-      text-align: center;
       font-weight: 700;
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
+      min-width: 20px;
+      text-align: center;
     }
     .add-to-cart-btn {
       flex: 1;
-      padding: var(--space-2) var(--space-3);
       background: var(--green);
-      color: var(--white);
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
+      color: #000;
       font-weight: 700;
+      font-size: var(--text-sm);
+      padding: 9px 14px;
+      border-radius: var(--radius-full);
       text-align: center;
-      transition: background var(--transition);
-      border: none;
-      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.02em;
     }
-    .add-to-cart-btn:hover { background: var(--green-light); }
-    .add-to-cart-btn.added {
-      background: var(--surface-4);
-      color: var(--text-muted);
+    .add-to-cart-btn:hover { background: #50d47e; transform: scale(1.02); }
+
+    /* Seasonal badge */
+    .seasonal-badge {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      background: var(--gold);
+      color: #000;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      z-index: 2;
     }
 
     /* ============================================================
-       CART PANEL
+       CART DRAWER
     ============================================================ */
-    .cart-overlay {
+    .cart-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
       z-index: 200;
       opacity: 0;
       pointer-events: none;
       transition: opacity var(--transition);
     }
-    .cart-overlay.open { opacity: 1; pointer-events: all; }
-    .cart-panel {
+    .cart-backdrop.open { opacity: 1; pointer-events: all; }
+    .cart-drawer {
       position: fixed;
       top: 0; right: 0; bottom: 0;
       width: min(420px, 100vw);
-      background: var(--surface);
+      background: var(--bg-2);
       border-left: 1px solid var(--border);
       z-index: 201;
       display: flex;
       flex-direction: column;
       transform: translateX(100%);
-      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition-slow);
     }
-    .cart-panel.open { transform: translateX(0); }
-    .cart-panel-header {
+    .cart-backdrop.open .cart-drawer { transform: translateX(0); }
+    .cart-header {
+      padding: var(--space-6);
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: var(--space-5) var(--space-6);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
     }
-    .cart-panel-title {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-    }
-    .cart-close-btn {
+    .cart-title { font-size: var(--text-xl); font-weight: 700; }
+    .cart-close {
       width: 36px; height: 36px;
       border-radius: 50%;
-      background: var(--surface-2);
+      background: var(--bg-3);
       border: 1px solid var(--border);
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
       font-size: 18px;
       transition: background var(--transition), color var(--transition);
     }
-    .cart-close-btn:hover { background: var(--surface-3); color: var(--text); }
-    .cart-items-list {
+    .cart-close:hover { background: var(--bg-4); color: var(--text); }
+    .cart-body {
       flex: 1;
       overflow-y: auto;
-      padding: var(--space-4);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
+      padding: var(--space-5) var(--space-6);
     }
     .cart-empty {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-4);
-      color: var(--text-faint);
-      padding: var(--space-12);
       text-align: center;
+      padding: var(--space-16) 0;
+      color: var(--text-muted);
     }
+    .cart-empty-icon { font-size: 48px; margin-bottom: var(--space-4); }
     .cart-item {
       display: flex;
       align-items: center;
-      gap: var(--space-3);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-3) var(--space-4);
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border);
     }
-    .cart-item-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--surface-3);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cart-item-info { flex: 1; min-width: 0; }
-    .cart-item-name {
-      font-weight: 700;
-      font-size: var(--text-sm);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .cart-item-price {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .cart-item-qty {
+    .cart-item-name { font-weight: 600; font-size: var(--text-sm); flex: 1; }
+    .cart-item-controls {
       display: flex;
       align-items: center;
       gap: var(--space-2);
     }
     .cart-qty-btn {
-      width: 26px; height: 26px;
+      width: 28px; height: 28px;
       border-radius: 50%;
-      background: var(--surface-3);
-      border: 1px solid var(--border);
+      background: var(--bg-3);
+      border: 1px solid var(--border-mid);
+      color: var(--text);
+      font-size: var(--text-base);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      transition: background var(--transition);
-      flex-shrink: 0;
-      cursor: pointer;
     }
-    .cart-qty-btn:hover { background: var(--surface-4); }
-    .cart-qty-display {
-      min-width: 20px;
-      text-align: center;
-      font-weight: 700;
-      font-size: var(--text-sm);
-    }
-    .cart-remove-btn {
-      color: var(--text-faint);
-      font-size: 14px;
-      padding: var(--space-1);
-      transition: color var(--transition);
-      cursor: pointer;
-    }
-    .cart-remove-btn:hover { color: var(--red-light); }
-
-    .cart-summary {
+    .cart-qty-btn:hover { background: var(--bg-4); }
+    .cart-qty { font-weight: 700; min-width: 18px; text-align: center; }
+    .cart-item-price { font-weight: 700; color: var(--green); min-width: 40px; text-align: right; }
+    .cart-footer {
+      padding: var(--space-6);
       border-top: 1px solid var(--border);
-      padding: var(--space-5) var(--space-6);
-      flex-shrink: 0;
+      background: var(--bg-3);
     }
-    .cart-summary-row {
+    .cart-totals { margin-bottom: var(--space-5); }
+    .cart-total-row {
       display: flex;
       justify-content: space-between;
       font-size: var(--text-sm);
+      color: var(--text-muted);
       margin-bottom: var(--space-2);
     }
-    .cart-summary-row .label { color: var(--text-muted); }
-    .cart-summary-row.total {
-      border-top: 1px solid var(--border);
+    .cart-total-row.grand {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text);
       padding-top: var(--space-3);
-      margin-top: var(--space-2);
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-3);
+    }
+    .cart-total-row.discount { color: var(--green); }
+    .cart-checkout-btn {
+      width: 100%;
+      background: var(--green);
+      color: #000;
       font-weight: 700;
       font-size: var(--text-base);
-    }
-    .cart-summary-row.total .value { color: var(--green-light); }
-    .deal-applied {
-      background: rgba(46,125,50,0.12);
-      border: 1px solid rgba(46,125,50,0.25);
-      border-radius: var(--radius-md);
-      padding: var(--space-2) var(--space-3);
-      font-size: var(--text-xs);
-      color: #6DCA71;
-      margin-bottom: var(--space-4);
-      display: none;
-    }
-    .deal-applied.visible { display: block; }
-    .checkout-btn {
-      width: 100%;
-      padding: var(--space-4);
-      background: var(--red);
-      color: var(--white);
+      padding: 14px;
       border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: var(--text-sm);
-      margin-top: var(--space-4);
+      letter-spacing: 0.02em;
       transition: background var(--transition), transform var(--transition);
-      cursor: pointer;
-      border: none;
     }
-    .checkout-btn:hover { background: var(--red-light); transform: translateY(-1px); }
-    .checkout-btn:disabled { background: var(--surface-3); color: var(--text-faint); cursor: not-allowed; transform: none; }
+    .cart-checkout-btn:hover { background: #50d47e; transform: translateY(-1px); }
 
     /* ============================================================
-       CHECKOUT SECTION (shown as a full-page overlay)
+       CHECKOUT SCREEN
     ============================================================ */
     .checkout-screen {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 300;
-      background: #fff;
+      background: var(--bg);
       overflow-y: auto;
       padding: var(--space-8) var(--space-6);
     }
@@ -996,43 +738,39 @@
       font-size: var(--text-sm);
       color: var(--text-muted);
       margin-bottom: var(--space-8);
-      padding: var(--space-2) var(--space-4);
+      padding: 8px 16px;
+      background: var(--bg-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-full);
       transition: color var(--transition), border-color var(--transition);
-      cursor: pointer;
-      background: none;
     }
-    .checkout-back:hover { color: var(--text); border-color: var(--text-muted); }
-    .checkout-title {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      margin-bottom: var(--space-2);
-    }
+    .checkout-back:hover { color: var(--text); border-color: var(--border-mid); }
+    .checkout-title { font-family: var(--font-display); font-size: var(--text-3xl); letter-spacing: 0.02em; margin-bottom: var(--space-2); }
     .checkout-subtitle { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-8); }
     .checkout-step-label {
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-      color: var(--green-light);
-      margin-bottom: var(--space-4);
       display: flex;
       align-items: center;
-      gap: var(--space-2);
+      gap: var(--space-3);
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border);
     }
     .checkout-step-label span {
-      display: inline-flex;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #000;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 22px; height: 22px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: 11px;
+      flex-shrink: 0;
     }
     .form-section {
-      background: var(--surface);
+      background: var(--bg-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: var(--space-6);
@@ -1043,76 +781,23 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-4);
     }
-    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      margin-bottom: var(--space-4);
-    }
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
     .form-group:last-child { margin-bottom: 0; }
-    .form-label {
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
+    .form-label { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
     .form-input {
-      padding: var(--space-3) var(--space-4);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: var(--bg-3);
+      border: 1px solid var(--border-mid);
       border-radius: var(--radius-md);
+      padding: 11px 14px;
       color: var(--text);
       font-size: var(--text-sm);
       transition: border-color var(--transition), box-shadow var(--transition);
       width: 100%;
     }
-    .form-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,0.15); }
+    .form-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,187,107,0.12); }
+    .form-input::placeholder { color: var(--text-faint); }
     .form-input.error { border-color: var(--red); }
-    .form-error { font-size: var(--text-xs); color: #F46B82; }
-    select.form-input { cursor: pointer; }
-
-    /* Delivery/Pickup Toggle */
-    .delivery-toggle {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-    }
-    .delivery-option {
-      border: 2px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-4);
-      cursor: pointer;
-      transition: border-color var(--transition), background var(--transition);
-      text-align: center;
-    }
-    .delivery-option:hover { border-color: var(--text-muted); }
-    .delivery-option.selected {
-      border-color: var(--green);
-      background: rgba(46,125,50,0.08);
-    }
-    .delivery-option input { display: none; }
-    .delivery-option-icon { font-size: 28px; margin-bottom: var(--space-2); }
-    .delivery-option-label { font-weight: 700; font-size: var(--text-sm); }
-    .delivery-option-sub { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
-    .delivery-option.selected .delivery-option-sub { color: #6DCA71; }
-
-    .address-fields { display: none; }
-    .address-fields.visible { display: block; }
-    .pickup-info {
-      display: none;
-      background: rgba(46,125,50,0.1);
-      border: 1px solid rgba(46,125,50,0.25);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4);
-      font-size: var(--text-sm);
-      color: #6DCA71;
-      margin-top: var(--space-3);
-    }
-    .pickup-info.visible { display: block; }
-    .pickup-info strong { display: block; margin-bottom: var(--space-1); color: var(--white); }
+    .form-error { font-size: var(--text-xs); color: var(--red); display: none; }
 
     /* Payment options */
     .payment-options {
@@ -1120,10 +805,9 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-3);
     }
-    @media (max-width: 480px) { .payment-options { grid-template-columns: 1fr; } }
     .payment-option {
-      border: 2px solid var(--border);
-      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-mid);
+      border-radius: var(--radius-xl);
       padding: var(--space-4);
       cursor: pointer;
       transition: border-color var(--transition), background var(--transition);
@@ -1131,493 +815,487 @@
       align-items: center;
       gap: var(--space-3);
     }
-    .payment-option:hover { border-color: var(--text-muted); }
-    .payment-option.selected {
-      border-color: var(--blue);
-      background: rgba(27,95,168,0.1);
-    }
+    .payment-option:hover { border-color: rgba(61,187,107,0.4); background: var(--green-dim); }
+    .payment-option.selected { border-color: var(--green); background: var(--green-dim); }
     .payment-option input { display: none; }
     .payment-icon { font-size: 24px; flex-shrink: 0; }
-    .payment-name { font-weight: 700; font-size: var(--text-sm); }
+    .payment-name { font-weight: 600; font-size: var(--text-sm); }
     .payment-handle { font-size: var(--text-xs); color: var(--text-muted); }
 
-    /* Order summary in checkout */
-    .checkout-order-summary {
-      background: var(--surface-2);
+    /* Order summary */
+    .checkout-summary {
+      background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: var(--space-6);
+      padding: var(--space-5) var(--space-6);
       margin-bottom: var(--space-6);
     }
-    .checkout-order-items { margin-bottom: var(--space-4); }
-    .checkout-order-item {
+    .summary-item {
       display: flex;
       justify-content: space-between;
       font-size: var(--text-sm);
-      padding-block: var(--space-2);
+      color: var(--text-muted);
+      padding: var(--space-2) 0;
       border-bottom: 1px solid var(--border);
     }
-    .checkout-order-item:last-child { border-bottom: none; }
-    .checkout-order-totals { margin-top: var(--space-4); }
-    .checkout-total-row {
+    .summary-item:last-of-type { border-bottom: none; }
+    .summary-total-row {
       display: flex;
       justify-content: space-between;
-      font-size: var(--text-sm);
-      padding-block: var(--space-1);
-    }
-    .checkout-total-row .lbl { color: var(--text-muted); }
-    .checkout-total-row.final {
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
       border-top: 1px solid var(--border);
-      padding-top: var(--space-3);
-      margin-top: var(--space-2);
-      font-weight: 700;
-      font-size: var(--text-base);
     }
-    .checkout-total-row.final .val { color: #FFD700; }
+    .summary-total-label { font-weight: 700; }
+    .summary-total-value { font-weight: 700; color: var(--green); font-size: var(--text-xl); }
 
     .complete-order-btn {
       width: 100%;
-      padding: var(--space-5) var(--space-8);
-      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
-      color: var(--white);
-      border-radius: var(--radius-full);
+      background: var(--green);
+      color: #000;
       font-weight: 700;
       font-size: var(--text-base);
-      border: none;
-      cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition);
-      box-shadow: var(--shadow-red);
+      padding: 16px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      margin-top: var(--space-4);
     }
-    .complete-order-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,30,58,0.45); }
+    .complete-order-btn:hover:not(:disabled) {
+      background: #50d47e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,187,107,0.35);
+    }
+    .complete-order-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
     /* ============================================================
-       ORDER CONFIRMATION MODAL
+       ORDER MODAL
     ============================================================ */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
       z-index: 400;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       padding: var(--space-6);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--transition);
     }
-    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal-backdrop.open { display: flex; }
     .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--bg-2);
+      border: 1px solid var(--border-mid);
       border-radius: var(--radius-2xl);
       padding: var(--space-8);
-      max-width: 520px;
+      max-width: 480px;
       width: 100%;
-      max-height: 90svh;
-      overflow-y: auto;
-      transform: scale(0.95) translateY(10px);
-      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
       position: relative;
     }
-    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
-    .modal::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--green), var(--blue), var(--red));
-      border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
-    }
-    .modal-check {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: rgba(46,125,50,0.15);
-      border: 2px solid rgba(46,125,50,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--space-5);
-      font-size: 30px;
-    }
+    .modal-check { font-size: 48px; margin-bottom: var(--space-4); }
     .modal-title {
       font-family: var(--font-display);
-      font-size: var(--text-xl);
-      text-align: center;
+      font-size: var(--text-3xl);
+      letter-spacing: 0.02em;
       margin-bottom: var(--space-2);
     }
-    .modal-subtitle { text-align: center; color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+    .modal-subtitle { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-5); }
     .modal-order-num {
-      text-align: center;
-      font-size: var(--text-xs);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green-light);
+      display: inline-block;
+      background: var(--bg-3);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-full);
+      padding: 6px 18px;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--green);
       margin-bottom: var(--space-6);
+      letter-spacing: 0.06em;
     }
     .payment-instruction-box {
-      background: var(--surface-2);
+      background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: var(--space-6);
+      padding: var(--space-5);
       margin-bottom: var(--space-5);
+      text-align: left;
     }
     .payment-instruction-label {
-      font-size: var(--text-xs);
+      font-size: 10px;
       font-weight: 700;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: var(--space-3);
-    }
-    .payment-instruction-method {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
+      color: var(--text-faint);
       margin-bottom: var(--space-2);
     }
-    .payment-instruction-handle {
-      font-size: var(--text-base);
-      font-weight: 700;
-      color: #FFD700;
+    .payment-instruction-method { font-weight: 700; font-size: var(--text-lg); margin-bottom: 2px; }
+    .payment-instruction-handle { color: var(--green); font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-4); }
+    .payment-amount-box {
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-4);
+      margin-top: var(--space-4);
       margin-bottom: var(--space-4);
     }
-    .payment-amount-box {
-      background: rgba(196,30,58,0.12);
-      border: 1px solid rgba(196,30,58,0.25);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4);
-      text-align: center;
-    }
-    .payment-amount-label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-    .payment-amount-value {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      color: var(--white);
-      margin-block: var(--space-1);
-    }
-    .payment-amount-note { font-size: var(--text-xs); color: #F46B82; }
+    .payment-amount-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); margin-bottom: var(--space-1); }
+    .payment-amount-value { font-size: var(--text-3xl); font-weight: 800; color: var(--green); }
+    .payment-amount-note { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
     .payment-ref-note {
       font-size: var(--text-xs);
       color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-3);
+      margin-top: var(--space-3);
       line-height: 1.6;
-      margin-top: var(--space-4);
-      padding: var(--space-3);
-      background: var(--surface-3);
-      border-radius: var(--radius-md);
     }
     .payment-ref-note strong { color: var(--text); }
     .modal-close-btn {
       width: 100%;
-      padding: var(--space-4);
       background: var(--green);
-      color: var(--white);
-      border-radius: var(--radius-full);
+      color: #000;
       font-weight: 700;
-      font-size: var(--text-sm);
-      border: none;
-      cursor: pointer;
+      font-size: var(--text-base);
+      padding: 14px;
+      border-radius: var(--radius-full);
       transition: background var(--transition);
-      margin-top: var(--space-4);
     }
-    .modal-close-btn:hover { background: var(--green-light); }
+    .modal-close-btn:hover { background: #50d47e; }
 
     /* ============================================================
        CONTACT SECTION
     ============================================================ */
-    .contact-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
+    .contact-section { background: var(--bg-2); }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      align-items: center;
+      gap: var(--space-16);
+      align-items: start;
     }
-    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
-    .contact-info-card {
-      background: var(--surface-2);
+    .contact-card {
+      background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: var(--radius-2xl);
       padding: var(--space-8);
-      position: relative;
-      overflow: hidden;
     }
-    .contact-info-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), var(--blue), var(--green));
-    }
-    .contact-name {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      margin-bottom: var(--space-1);
-    }
-    .contact-role { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-6); }
+    .contact-name { font-size: var(--text-xl); font-weight: 700; margin-bottom: 2px; }
+    .contact-role { font-size: var(--text-sm); color: var(--green); font-weight: 500; letter-spacing: 0.06em; margin-bottom: var(--space-6); }
     .contact-detail {
       display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      margin-bottom: var(--space-4);
-      font-size: var(--text-sm);
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border);
     }
+    .contact-detail:last-child { border-bottom: none; }
     .contact-detail-icon {
-      width: 36px; height: 36px;
+      width: 38px; height: 38px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18px;
       flex-shrink: 0;
     }
-    .contact-detail-icon.green { background: rgba(46,125,50,0.15); }
-    .contact-detail-icon.blue { background: rgba(27,95,168,0.15); }
-    .contact-detail a { color: var(--blue-light); text-decoration: none; }
-    .contact-detail a:hover { color: var(--blue); text-decoration: underline; }
+    .icon-green { background: var(--green-dim); }
+    .icon-gold  { background: var(--gold-dim); }
+    .contact-detail-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 3px; }
+    .contact-detail-value { font-size: var(--text-sm); font-weight: 500; }
+    .contact-detail-value a { color: var(--text); transition: color var(--transition); }
+    .contact-detail-value a:hover { color: var(--green); }
+    .contact-detail-note { font-size: var(--text-xs); color: var(--green); margin-top: 2px; }
 
-    .contact-right h3 {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      margin-bottom: var(--space-4);
+    /* Payment methods panel */
+    .payment-panel {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
     }
-    .contact-right p { color: var(--text-muted); max-width: 40ch; margin-bottom: var(--space-6); }
+    .payment-panel-title {
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+    .pay-method {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pay-method:last-child { border-bottom: none; }
+    .pay-method-icon {
+      width: 42px; height: 42px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .pay-bg-blue   { background: rgba(0,119,255,0.12); }
+    .pay-bg-purple { background: rgba(137,80,203,0.12); }
+    .pay-method-name { font-weight: 600; font-size: var(--text-sm); margin-bottom: 2px; }
+    .pay-method-handle { font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* In-store card */
+    .instore-card {
+      margin-top: var(--space-5);
+      background: var(--green-dim);
+      border: 1px solid rgba(61,187,107,0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+    }
+    .instore-title { font-weight: 700; color: var(--green); margin-bottom: var(--space-3); font-size: var(--text-sm); }
+    .instore-location { font-size: var(--text-sm); color: var(--text-muted); display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; }
+    .instore-note { font-size: var(--text-xs); color: var(--text-faint); margin-top: var(--space-3); }
 
     /* ============================================================
        FOOTER
     ============================================================ */
-    .site-footer {
-      background: var(--black);
+    .footer {
+      background: var(--bg);
       border-top: 1px solid var(--border);
-      padding-block: var(--space-8);
+      padding: var(--space-10) var(--space-6);
       text-align: center;
     }
-    .footer-logo-text {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-3);
-    }
-    .footer-tagline { font-size: var(--text-sm); color: var(--text-faint); margin-bottom: var(--space-6); }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: var(--space-4) var(--space-8);
-      margin-bottom: var(--space-6);
-    }
-    .footer-link { font-size: var(--text-xs); color: var(--text-muted); transition: color var(--transition); }
+    .footer-logo { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
+    .footer-logo span { color: var(--green); }
+    .footer-tagline { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+    .footer-links { display: flex; justify-content: center; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-8); }
+    .footer-link { font-size: var(--text-sm); color: var(--text-muted); transition: color var(--transition); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
     .footer-link:hover { color: var(--text); }
     .footer-copy { font-size: var(--text-xs); color: var(--text-faint); }
 
     /* ============================================================
-       ANIMATIONS / SCROLL FADE
-    ============================================================ */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 600ms ease, transform 600ms ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ============================================================
-       NOTIFICATION TOAST
+       TOAST
     ============================================================ */
     #toast-container {
       position: fixed;
       bottom: var(--space-6);
       left: 50%;
       transform: translateX(-50%);
-      z-index: 500;
+      z-index: 600;
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
-      pointer-events: none;
       align-items: center;
     }
     .toast {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: var(--bg-4);
+      border: 1px solid var(--border-mid);
       color: var(--text);
-      padding: var(--space-3) var(--space-5);
+      padding: 10px 20px;
       border-radius: var(--radius-full);
       font-size: var(--text-sm);
       font-weight: 500;
-      box-shadow: var(--shadow-lg);
-      animation: toastIn 300ms ease forwards;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      animation: toastIn 0.3s ease;
+    }
+    .toast.green { border-color: rgba(61,187,107,0.4); color: var(--green); }
+    @keyframes toastIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+
+    /* ============================================================
+       ORDER CONFIRMATION BANNER
+    ============================================================ */
+    #order-confirm-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      background: #1a5c36;
+      border-bottom: 1px solid rgba(61,187,107,0.3);
+      padding: 14px 24px;
+      text-align: center;
+      animation: slideDown 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .banner-inner {
+      max-width: 700px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: var(--space-2);
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
     }
-    .toast.green { border-color: rgba(46,125,50,0.4); }
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .banner-text { font-weight: 600; font-size: var(--text-sm); color: #fff; }
+    .banner-dismiss {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      border-radius: var(--radius-full);
+      padding: 4px 12px;
+      font-size: var(--text-xs);
+      cursor: pointer;
+      font-weight: 600;
     }
-    @keyframes toastOut {
-      to { opacity: 0; transform: translateY(10px); }
+    .banner-dismiss:hover { background: rgba(255,255,255,0.3); }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity:0; } to { transform: translateY(0); opacity:1; } }
+
+    /* ============================================================
+       FADE-UP ANIMATION
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .overview-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .form-row { grid-template-columns: 1fr; }
+      .payment-options { grid-template-columns: 1fr; }
+      .section { padding: var(--space-16) 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { line-height: 0.9; }
+      .hero-ctas { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <!-- ============================================================
-     HEADER
+     NAVIGATION
 ============================================================ -->
-<header class="site-header" role="banner">
-  <div class="header-inner">
-    <a href="#hero" class="header-logo" aria-label="Raw Remedease Home">
-      <img src="images/logo.jpg" alt="Raw Remedease Logo" class="header-logo-icon" style="border-radius:50%;object-fit:cover;" />
-      <span class="header-logo-text">
-        <span class="raw">Raw</span> <span class="remed">Remed</span><span class="ease">ease</span>
-      </span>
-    </a>
-
-    <nav class="header-nav" id="mobile-nav" role="navigation" aria-label="Main navigation">
-      <a href="#overview" class="nav-link">Overview</a>
-      <a href="#menu" class="nav-link">Menu</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Cart
-        <span class="cart-count hidden" id="cart-count">0</span>
-      </button>
-    </nav>
-
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-brand" aria-label="Raw Remedease home">
+    <img src="images/logo.jpg" alt="Raw Remedease Logo" class="nav-logo" />
+    <span class="nav-wordmark">Raw <span>Remedease</span></span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#overview" class="nav-link">About</a></li>
+    <li><a href="#menu" class="nav-link">Menu</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-cart-btn" onclick="openCart()" aria-label="Open cart">
+      🛒 Cart <span id="nav-cart-count">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-</header>
+</nav>
 
-<!-- ============================================================
-     HERO SECTION
-============================================================ -->
-<section id="hero" class="hero section">
-  <div class="hero-bg-pattern" aria-hidden="true"></div>
-  <div class="hero-logo-wrap fade-up">
-    <!-- Large hero logo — Flower of Life SVG matching brand -->
-    <img src="images/logo.jpg" alt="Raw Remedease Logo — Flower of Life with fresh fruits" class="hero-logo-svg" style="border-radius:50%;object-fit:cover;box-shadow:0 0 60px rgba(46,125,50,0.25), 0 0 30px rgba(196,30,58,0.15);" />
-  </div>
-
-  <div class="fade-up" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5);">
-    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(196,30,58,0.15);border:1px solid rgba(196,30,58,0.35);border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#F46B82;">✊🏾 Black-Owned Business</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(27,95,168,0.15);border:1px solid rgba(27,95,168,0.35);border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5B9FE8;">🏙️ Washington D.C.</span>
-  </div>
-  <p class="hero-eyebrow fade-up">Established April 2024 · For the People, By the People</p>
-  <h1 class="hero-title fade-up">
-    <span class="brand-raw">Raw</span> <span class="brand-remed">Remed</span><span class="brand-ease">ease</span>
-  </h1>
-  <p class="hero-subtitle fade-up">Natural RemedEASE through raw, plant-based juices. For the people, by the people. Feel better from the inside out.</p>
-  <div class="hero-cta-group fade-up">
-    <a href="#menu" class="btn btn-primary btn-lg">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12h8M12 8v8"/></svg>
-      Order Now
-    </a>
-    <a href="#overview" class="btn btn-secondary btn-lg">Learn More</a>
-  </div>
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    Scroll
-  </div>
-</section>
-
-<!-- ============================================================
-     DEAL BANNER
-============================================================ -->
-<div class="deal-banner" aria-label="Current pricing deals">
-  <div class="deal-banner-inner container">
-    <div class="deal-item">
-      <span class="deal-price">$9</span>
-      <span class="deal-desc">Per Drink</span>
-    </div>
-    <div class="deal-separator" aria-hidden="true">·</div>
-    <div class="deal-highlight">
-      <strong>3 for $21 🌿</strong>
-      <span>Mix & match any drinks — save $6</span>
-    </div>
-    <div class="deal-separator" aria-hidden="true">·</div>
-    <div class="deal-item">
-      <span class="deal-price">Free</span>
-      <span class="deal-desc">Pickup Available</span>
-    </div>
-  </div>
+<div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="#overview" class="nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">About</a>
+  <a href="#menu" class="nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Menu</a>
+  <a href="#contact" class="nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Contact</a>
+  <button class="nav-cart-btn" onclick="openCart(); document.getElementById('mobile-nav').classList.remove('open')">🛒 Cart <span id="nav-cart-count-mobile">0</span></button>
 </div>
 
 <!-- ============================================================
-     OVERVIEW SECTION
+     HERO
+============================================================ -->
+<section id="hero" class="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-logo-wrap fade-up">
+    <img src="images/logo.jpg" alt="Raw Remedease — Flower of Life Logo" class="hero-logo" />
+  </div>
+
+  <div class="hero-badges fade-up">
+    <span class="hero-badge badge-red">✊🏾 Black-Owned</span>
+    <span class="hero-badge badge-green">🏙️ Washington D.C.</span>
+    <span class="hero-badge badge-gold">🌿 For the People</span>
+  </div>
+
+  <p class="hero-eyebrow fade-up">Established April 2024 · By the People, For the People</p>
+
+  <h1 class="hero-title fade-up">
+    Raw <span class="t-green">Reme</span>dease
+  </h1>
+
+  <p class="hero-subtitle fade-up">Natural RemedEASE — raw juice crafted for the community.</p>
+
+  <div class="hero-ctas fade-up">
+    <a href="#menu" class="btn-primary">Order Now</a>
+    <a href="#overview" class="btn-outline">Our Story</a>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OVERVIEW
 ============================================================ -->
 <section id="overview" class="section overview-section" aria-labelledby="overview-title">
-  <div class="container container--default">
+  <div class="container">
     <div class="overview-grid">
 
-      <!-- Mission Column -->
-      <div class="overview-mission">
+      <div class="overview-body fade-up">
         <p class="section-label">Our Mission</p>
         <h2 class="section-title" id="overview-title">Natural Wellness,<br>From the Earth</h2>
-        <hr class="section-divider" style="background: linear-gradient(90deg, var(--green), var(--blue)); border:none;" />
         <p>Raw Remedease exists to provide <strong>Natural RemedEASE</strong> — accessible, raw juice crafted for the community. No fillers, no shortcuts. Just the pure power of nature in every sip.</p>
         <p>Founded in Washington D.C. by Sean Smith, a former vegan with a passion for plant-based living — Raw Remedease is <strong>Black-owned, community-driven, and built for the people</strong>. Real ingredients. Real results. Rooted in D.C.</p>
         <p>Whether you're looking to boost immunity, improve digestion, detox, or simply feel more vibrant — every bottle is made with intention.</p>
-        <div class="mission-pillars" role="list">
-          <span class="pillar-tag red" role="listitem">✊🏾 Black-Owned</span>
-          <span class="pillar-tag blue" role="listitem">🏙️ Washington D.C.</span>
-          <span class="pillar-tag green" role="listitem">🌿 100% Plant-Based</span>
-          <span class="pillar-tag red" role="listitem">💧 Raw &amp; Fresh</span>
-          <span class="pillar-tag blue" role="listitem">🍎 No Added Sugar</span>
-          <span class="pillar-tag green" role="listitem">✨ For the People</span>
+        <div class="pillar-tags">
+          <span class="pillar-tag pillar-red">✊🏾 Black-Owned</span>
+          <span class="pillar-tag pillar-green">🏙️ Washington D.C.</span>
+          <span class="pillar-tag pillar-green">🌿 100% Plant-Based</span>
+          <span class="pillar-tag pillar-gold">💧 Raw &amp; Fresh</span>
+          <span class="pillar-tag pillar-red">🍎 No Added Sugar</span>
+          <span class="pillar-tag pillar-gold">✨ For the People</span>
+        </div>
+
+        <div class="delivery-banner" style="margin-top:var(--space-8);">
+          <div class="delivery-icon">🚚</div>
+          <div>
+            <div class="delivery-title">Delivery Available</div>
+            <div class="delivery-desc">Within 40 miles of Waldorf, MD · $5.99 delivery fee · Online orders are delivery only</div>
+          </div>
         </div>
       </div>
 
-      <!-- Founder Column -->
-      <div>
-        <div class="founder-card fade-up">
-          <div class="founder-avatar" aria-hidden="true">S</div>
+      <div class="fade-up">
+        <div class="founder-card">
+          <div class="founder-avatar">S</div>
           <div class="founder-name">Sean Smith</div>
-          <div class="founder-title">Founder &amp; Creator</div>
-          <div class="founder-bio" role="note" aria-label="Founder bio" style="font-style:normal; color: var(--text-muted); line-height:1.8;">
-            Born and raised in Washington D.C., Sean Smith is a former vegan who turned his passion for plant-based living into something bigger — a movement. Raw Remedease is built <strong style="color:var(--text)">for the people, by the people</strong>: accessible, real, and rooted in community.
-          </div>
-          <div class="founded-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
-            Established April 2024 · Washington D.C.
-          </div>
-          <div style="margin-top:var(--space-4);padding:var(--space-3) var(--space-4);background:rgba(27,95,168,0.1);border:1px solid rgba(27,95,168,0.25);border-radius:var(--radius-lg);font-size:var(--text-xs);color:#5B9FE8;">
-            🏪 <strong style="color:var(--text)">Available In-Store</strong> at Milk &amp; Honey H Street (DC) &amp; Milk &amp; Honey Woodmore (MD) — walk in and grab a fresh juice, no order needed.
-          </div>
+          <div class="founder-role">Founder &amp; Creator</div>
+          <p class="founder-quote">"I started Raw Remedease because I believe everyone deserves access to real, plant-based nutrition. No barriers, no excuses — just nature doing what it does best."</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     DRINKS MENU SECTION
+     MENU
 ============================================================ -->
 <section id="menu" class="section menu-section" aria-labelledby="menu-title">
   <div class="container">
     <div class="menu-header">
       <div>
         <p class="section-label">The Menu</p>
-        <h2 class="section-title" id="menu-title">Raw Juice &amp; Drink Menu</h2>
-        <p style="color: var(--text-muted); font-size: var(--text-sm);">Raw juice, made fresh · Each $9 · 3 for $21 (mix &amp; match)</p>
+        <h2 class="section-title" id="menu-title">Raw Juice Menu</h2>
+        <p class="menu-pricing-note">Each $9 · <strong>3 for $21</strong> — mix &amp; match any flavors</p>
       </div>
-      <button class="btn btn-outline-green" onclick="openCart()" aria-label="View cart">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        View Cart (<span id="menu-cart-count">0</span>)
+      <button class="nav-cart-btn" onclick="openCart()" aria-label="View cart">
+        🛒 View Cart (<span id="menu-cart-count">0</span>)
       </button>
     </div>
 
-    <!-- Drink Cards Grid -->
     <div class="menu-grid" id="drink-grid" role="list">
 
       <!-- 1. APB -->
       <article class="drink-card fade-up" role="listitem" data-drink-id="apb">
         <div class="drink-card-image">
-          <img src="images/apb.jpg" alt="APB juice — Apple, Pineapple, Beets, Ginger" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          <img src="images/apb.jpg" alt="APB juice — Apple, Pineapple, Beets, Ginger" loading="lazy" />
         </div>
         <div class="drink-card-body">
           <div class="drink-number">01</div>
@@ -1630,11 +1308,11 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for APB">
-            <button class="qty-btn" onclick="updateDrinkQty('apb', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('apb', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-apb">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('apb', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('apb', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('apb', 'APB', 1)" aria-label="Add APB to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('apb', 'APB', 1)">+ Add to Cart</button>
         </div>
       </article>
 
@@ -1654,18 +1332,18 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for A Date With Cinanabutter">
-            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-cinanabutter">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('cinanabutter', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('cinanabutter', 'A Date With Cinanabutter', 1)" aria-label="Add A Date With Cinanabutter to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('cinanabutter', 'A Date With Cinanabutter', 1)">+ Add to Cart</button>
         </div>
       </article>
 
       <!-- 3. 14 CARAT -->
       <article class="drink-card fade-up" role="listitem" data-drink-id="carat14">
         <div class="drink-card-image">
-          <img src="images/carat14.jpg" alt="14 Carat juice — Carrot, Orange, Turmeric, Lemon, Ginger, Apple" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          <img src="images/carat14.jpg" alt="14 Carat juice — Carrot, Orange, Turmeric, Lemon, Ginger, Apple" loading="lazy" />
         </div>
         <div class="drink-card-body">
           <div class="drink-number">03</div>
@@ -1678,18 +1356,18 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for 14 Carat">
-            <button class="qty-btn" onclick="updateDrinkQty('carat14', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('carat14', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-carat14">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('carat14', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('carat14', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('carat14', '14 Carat', 1)" aria-label="Add 14 Carat to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('carat14', '14 Carat', 1)">+ Add to Cart</button>
         </div>
       </article>
 
       <!-- 4. GREEN LIGHT -->
       <article class="drink-card fade-up" role="listitem" data-drink-id="greenlight">
         <div class="drink-card-image">
-          <img src="images/greenlight.jpg" alt="Green Light juice — Cucumber, Green Apple, Lemon, Ginger" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          <img src="images/greenlight.jpg" alt="Green Light juice — Cucumber, Green Apple, Lemon, Ginger" loading="lazy" />
         </div>
         <div class="drink-card-body">
           <div class="drink-number">04</div>
@@ -1702,18 +1380,18 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for Green Light">
-            <button class="qty-btn" onclick="updateDrinkQty('greenlight', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('greenlight', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-greenlight">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('greenlight', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('greenlight', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('greenlight', 'Green Light', 1)" aria-label="Add Green Light to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('greenlight', 'Green Light', 1)">+ Add to Cart</button>
         </div>
       </article>
 
       <!-- 5. SERENE GREEN CLEAN -->
       <article class="drink-card fade-up" role="listitem" data-drink-id="serenegreen">
         <div class="drink-card-image">
-          <img src="images/serenegreen.jpg" alt="Serene Green Clean juice — Kale, Lime, Celery, Cucumber, Mint, Banana, Green Apple, Kiwi, Pear" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          <img src="images/serenegreen.jpg" alt="Serene Green Clean juice — Kale, Lime, Celery, Cucumber, Mint, Banana, Green Apple, Kiwi, Pear" loading="lazy" />
         </div>
         <div class="drink-card-body">
           <div class="drink-number">05</div>
@@ -1726,18 +1404,18 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for Serene Green Clean">
-            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-serenegreen">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('serenegreen', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('serenegreen', 'Serene Green Clean', 1)" aria-label="Add Serene Green Clean to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('serenegreen', 'Serene Green Clean', 1)">+ Add to Cart</button>
         </div>
       </article>
 
       <!-- 6. DARK KNIGHT -->
       <article class="drink-card fade-up" role="listitem" data-drink-id="darkknight">
         <div class="drink-card-image">
-          <img src="images/darkknight.jpg" alt="Dark Knight juice — Activated Charcoal, Lemon, Agave, Aloe Vera, Pineapple, Spring Water" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          <img src="images/darkknight.jpg" alt="Dark Knight juice — Activated Charcoal, Lemon, Agave, Aloe Vera, Pineapple, Spring Water" loading="lazy" />
         </div>
         <div class="drink-card-body">
           <div class="drink-number">06</div>
@@ -1750,17 +1428,17 @@
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for Dark Knight">
-            <button class="qty-btn" onclick="updateDrinkQty('darkknight', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('darkknight', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-darkknight">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('darkknight', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('darkknight', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('darkknight', 'Dark Knight', 1)" aria-label="Add Dark Knight to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('darkknight', 'Dark Knight', 1)">+ Add to Cart</button>
         </div>
       </article>
 
       <!-- 7. BLACK SEEDED WATERMELON (Seasonal) -->
-      <article class="drink-card seasonal fade-up" role="listitem" data-drink-id="watermelon">
-        <div class="drink-card-image">
+      <article class="drink-card fade-up" role="listitem" data-drink-id="watermelon">
+        <div class="drink-card-image" style="position:relative;">
           <div class="seasonal-badge" aria-label="Seasonal item">Seasonal</div>
           <div class="wm-slideshow" style="width:100%;height:100%;position:relative;overflow:hidden;">
             <img src="images/watermelon1.jpg" alt="Black Seeded Watermelon juice" class="wm-slide wm-active" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:opacity 1s ease;" loading="lazy" />
@@ -1772,103 +1450,104 @@
           <div class="drink-name">Black Seeded Watermelon</div>
           <div class="drink-ingredients">
             <strong>Seasonal Fresh Juice</strong>
-            Seasonal fresh watermelon juice with black seeds. Available while in season.
+            Fresh watermelon juice with black seeds. Available while in season.
           </div>
           <div class="drink-price">$9.00</div>
         </div>
         <div class="drink-card-footer">
           <div class="qty-control" aria-label="Quantity for Black Seeded Watermelon">
-            <button class="qty-btn" onclick="updateDrinkQty('watermelon', -1)" aria-label="Decrease quantity">−</button>
+            <button class="qty-btn" onclick="updateDrinkQty('watermelon', -1)" aria-label="Decrease">−</button>
             <span class="qty-display" id="qty-watermelon">0</span>
-            <button class="qty-btn" onclick="updateDrinkQty('watermelon', 1)" aria-label="Increase quantity">+</button>
+            <button class="qty-btn" onclick="updateDrinkQty('watermelon', 1)" aria-label="Increase">+</button>
           </div>
-          <button class="add-to-cart-btn" onclick="addToCart('watermelon', 'Black Seeded Watermelon', 1)" aria-label="Add Black Seeded Watermelon to cart">+ Add to Cart</button>
+          <button class="add-to-cart-btn" onclick="addToCart('watermelon', 'Black Seeded Watermelon', 1)">+ Add to Cart</button>
         </div>
       </article>
 
-    </div><!-- end menu-grid -->
-
-    <!-- Delivery Note -->
-    <div style="margin-top: var(--space-10); padding: var(--space-5) var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: center; justify-content: space-between;" role="note" aria-label="Delivery and pickup information">
-      <div style="display: flex; align-items: flex-start; gap: var(--space-3);">
-        <div style="font-size: 28px; flex-shrink: 0;" aria-hidden="true">🚗</div>
-        <div>
-          <div style="font-weight: 700; margin-bottom: 4px;">Delivery Available</div>
-          <div style="font-size: var(--text-xs); color: var(--text-muted);">Within 40 miles of Waldorf, MD · $5.99 delivery fee</div>
-        </div>
-      </div>
-      <div style="display: flex; align-items: flex-start; gap: var(--space-3);">
-        <div style="font-size: 28px; flex-shrink: 0;" aria-hidden="true">🏪</div>
-        <div>
-          <div style="font-weight: 700; margin-bottom: 4px;">Buy In-Store</div>
-          <div style="font-size: var(--text-xs); color: var(--text-muted);">Milk &amp; Honey H Street, Washington DC</div>
-          <div style="font-size: var(--text-xs); color: var(--text-muted);">Milk &amp; Honey Woodmore, MD</div>
-          <div style="font-size: var(--text-xs); color: var(--green-light); margin-top: 2px;">Walk in anytime — no order needed</div>
-        </div>
-      </div>
-      <button class="btn btn-primary" onclick="openCart()" aria-label="View cart and proceed to checkout">
-        View Cart &amp; Order
-      </button>
     </div>
-
   </div>
 </section>
 
 <!-- ============================================================
-     CONTACT SECTION
+     CONTACT
 ============================================================ -->
 <section id="contact" class="section contact-section" aria-labelledby="contact-title">
-  <div class="container container--default">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:var(--space-12);">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title" id="contact-title">Contact Sean Smith</h2>
+    </div>
     <div class="contact-grid">
-      <div>
-        <p class="section-label">Get in Touch</p>
-        <h2 class="section-title" id="contact-title">Contact Sean Smith</h2>
-        <hr class="section-divider" style="background: linear-gradient(90deg, var(--red), var(--blue)); border:none;" />
-        <div class="contact-info-card">
-          <div class="founder-avatar" style="margin-bottom: var(--space-4);" aria-hidden="true">S</div>
+
+      <div class="fade-up">
+        <div class="contact-card">
+          <div class="founder-avatar">S</div>
           <div class="contact-name">Sean Smith</div>
           <div class="contact-role">Founder · Raw Remedease</div>
+
           <div class="contact-detail">
-            <div class="contact-detail-icon green" aria-hidden="true">✉️</div>
+            <div class="contact-detail-icon icon-green">✉️</div>
             <div>
-              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Email</div>
-              <a href="mailto:sean@rawremedease.com">sean@rawremedease.com</a>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:sean@rawremedease.com">sean@rawremedease.com</a></div>
             </div>
           </div>
           <div class="contact-detail">
-            <div class="contact-detail-icon blue" aria-hidden="true">📞</div>
+            <div class="contact-detail-icon icon-green">📞</div>
             <div>
-              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Phone</div>
-              <a href="tel:+13018618446">(301) 861-8446</a>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value"><a href="tel:+13018618446">(301) 861-8446</a></div>
             </div>
           </div>
           <div class="contact-detail">
-            <div class="contact-detail-icon blue" aria-hidden="true">📍</div>
+            <div class="contact-detail-icon icon-gold">📦</div>
             <div>
-              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">In-Store Locations</div>
-              <span>Milk &amp; Honey H Street, Washington DC<br/>Milk &amp; Honey Woodmore, MD<br/><span style="font-size:var(--text-xs);color:var(--green-light);">Walk in to purchase · No online pickup orders</span></span>
+              <div class="contact-detail-label">Delivery Area</div>
+              <div class="contact-detail-value">Within 40 miles of Waldorf, MD</div>
+              <div class="contact-detail-note">$5.99 delivery fee · Online orders only</div>
             </div>
           </div>
           <div class="contact-detail">
-            <div class="contact-detail-icon green" aria-hidden="true">📦</div>
+            <div class="contact-detail-icon icon-green">📍</div>
             <div>
-              <div style="font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Delivery Area</div>
-              <span>Within 40 miles of Waldorf, MD</span>
+              <div class="contact-detail-label">In-Store Locations</div>
+              <div class="contact-detail-value">
+                Milk &amp; Honey H Street, Washington DC<br/>
+                Milk &amp; Honey Woodmore, MD
+              </div>
+              <div class="contact-detail-note">Walk in to purchase · No online pickup</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="contact-right">
-        <h3>Ready to Order?</h3>
-        <p>Browse our raw juice menu, add your favorites to cart, and we'll deliver straight to your door. Or walk into <strong>Milk &amp; Honey H Street (DC)</strong> or <strong>Milk &amp; Honey Woodmore (MD)</strong> to grab one in person.</p>
-        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <a href="#menu" class="btn btn-primary">Browse the Menu</a>
-          <a href="mailto:sean@rawremedease.com" class="btn btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email Sean
-          </a>
+
+      <div class="fade-up">
+        <div class="payment-panel">
+          <div class="payment-panel-title">💳 We Accept</div>
+          <div class="pay-method">
+            <div class="pay-method-icon pay-bg-blue">💙</div>
+            <div>
+              <div class="pay-method-name">PayPal</div>
+              <div class="pay-method-handle">@RawRemedease</div>
+            </div>
+          </div>
+          <div class="pay-method">
+            <div class="pay-method-icon pay-bg-purple">💸</div>
+            <div>
+              <div class="pay-method-name">Venmo</div>
+              <div class="pay-method-handle">@Sean-Smith-RR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="instore-card" style="margin-top:var(--space-5);">
+          <div class="instore-title">🏪 Also Available In-Store</div>
+          <div class="instore-location">📍 Milk &amp; Honey H Street, Washington DC</div>
+          <div class="instore-location">📍 Milk &amp; Honey Woodmore, MD</div>
+          <div class="instore-note">Walk in during store hours to purchase. No online pickup orders accepted.</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1876,140 +1555,112 @@
 <!-- ============================================================
      FOOTER
 ============================================================ -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-logo-text">
-      <span class="brand-raw">Raw</span> <span class="brand-remed">Remed</span><span class="brand-ease">ease</span>
-    </div>
-    <p class="footer-tagline">Natural RemedEASE · Raw Juice · Black-Owned · Washington D.C. · For the People, By the People</p>
-    <nav class="footer-links" aria-label="Footer navigation">
-      <a href="#overview" class="footer-link">Overview</a>
-      <a href="#menu" class="footer-link">Menu</a>
-      <a href="#contact" class="footer-link">Contact</a>
-      <a href="mailto:sean@rawremedease.com" class="footer-link">Email Us</a>
-    </nav>
-    <p class="footer-copy">© 2024 Raw Remedease · Founded by Sean Smith · Waldorf, MD</p>
-  </div>
+<footer class="footer" role="contentinfo">
+  <div class="footer-logo">Raw <span>Remedease</span></div>
+  <p class="footer-tagline">Natural RemedEASE · Washington D.C. · For the People, By the People</p>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="#overview" class="footer-link">About</a>
+    <a href="#menu" class="footer-link">Menu</a>
+    <a href="#contact" class="footer-link">Contact</a>
+  </nav>
+  <p class="footer-copy">© 2024 Raw Remedease · Black-Owned Business · Washington D.C.</p>
 </footer>
 
 <!-- ============================================================
-     CART PANEL
+     CART DRAWER
 ============================================================ -->
-<div class="cart-overlay" id="cart-overlay" role="dialog" aria-modal="true" aria-label="Shopping cart" onclick="closeCart()">
-</div>
-<aside class="cart-panel" id="cart-panel" aria-label="Shopping cart">
-  <div class="cart-panel-header">
-    <h2 class="cart-panel-title">Your Cart</h2>
-    <button class="cart-close-btn" onclick="closeCart()" aria-label="Close cart">✕</button>
-  </div>
-  <div class="cart-items-list" id="cart-items-list" role="list" aria-live="polite">
-    <div class="cart-empty" id="cart-empty">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="color: var(--text-faint)"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      <div>
-        <p style="font-weight:600; margin-bottom: 4px;">Your cart is empty</p>
-        <p style="font-size: var(--text-xs);">Add drinks from the menu to get started.</p>
+<div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-drawer" onclick="event.stopPropagation()">
+    <div class="cart-header">
+      <div class="cart-title">Your Cart 🛒</div>
+      <button class="cart-close" onclick="closeCart()" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-body" id="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <div class="cart-empty-icon">🌿</div>
+        <p>Your cart is empty</p>
+        <p style="font-size:var(--text-xs);color:var(--text-faint);margin-top:4px;">Add some drinks to get started</p>
       </div>
-      <button class="btn btn-outline-green btn-sm" onclick="closeCart(); document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Browse Menu</button>
+      <div id="cart-items"></div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-totals" id="cart-totals"></div>
+      <button class="cart-checkout-btn" onclick="openCheckout()">Proceed to Checkout →</button>
     </div>
   </div>
-  <div class="cart-summary" id="cart-summary" style="display:none;" aria-live="polite">
-    <div class="deal-applied" id="deal-applied">
-      🌿 3-for-$21 deal applied! You're saving <span id="deal-savings">$0</span>
-    </div>
-    <div class="cart-summary-row">
-      <span class="label">Items</span>
-      <span class="value" id="summary-items">0</span>
-    </div>
-    <div class="cart-summary-row">
-      <span class="label">Regular Total</span>
-      <span class="value" id="summary-regular">$0.00</span>
-    </div>
-    <div class="cart-summary-row" id="discount-row" style="display:none;">
-      <span class="label" style="color: #6DCA71;">Discount</span>
-      <span class="value" style="color: #6DCA71;" id="summary-discount">-$0.00</span>
-    </div>
-    <div class="cart-summary-row total">
-      <span class="label">Total</span>
-      <span class="value" id="summary-total">$0.00</span>
-    </div>
-    <button class="checkout-btn" id="checkout-btn" onclick="openCheckout()" aria-label="Proceed to checkout">
-      Proceed to Checkout →
-    </button>
-  </div>
-</aside>
+</div>
 
 <!-- ============================================================
      CHECKOUT SCREEN
 ============================================================ -->
 <div class="checkout-screen" id="checkout-screen" role="dialog" aria-modal="true" aria-labelledby="checkout-heading">
   <div class="checkout-inner">
-    <button class="checkout-back" onclick="closeCheckout()" aria-label="Back to cart">
-      ← Back to Cart
-    </button>
-    <h1 class="checkout-title" id="checkout-heading">Checkout</h1>
-    <p class="checkout-subtitle">Complete your order details below.</p>
+    <button class="checkout-back" onclick="closeCheckout()" aria-label="Back to cart">← Back to Cart</button>
 
-    <!-- Step 1: Contact Info -->
-    <div class="checkout-step-label"><span>1</span> Contact Information</div>
+    <div class="checkout-title" id="checkout-heading">Checkout</div>
+    <p class="checkout-subtitle">Delivery only · $5.99 fee · Within 40 miles of Waldorf, MD</p>
+
+    <!-- Order Summary -->
+    <div class="checkout-step-label"><span>0</span> Order Summary</div>
+    <div class="checkout-summary" id="checkout-summary"></div>
+
+    <!-- Contact Info -->
+    <div class="checkout-step-label"><span>1</span> Contact Info</div>
     <div class="form-section">
       <div class="form-group">
         <label class="form-label" for="full-name">Full Name *</label>
-        <input type="text" id="full-name" class="form-input" placeholder="Your full name" autocomplete="name" />
-        <span class="form-error" id="err-name" style="display:none">Please enter your full name.</span>
+        <input class="form-input" type="text" id="full-name" placeholder="Your full name" autocomplete="name" />
+        <div class="form-error" id="err-name">Please enter your full name</div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" for="email">Email Address *</label>
-          <input type="email" id="email" class="form-input" placeholder="you@example.com" autocomplete="email" />
-          <span class="form-error" id="err-email" style="display:none">Please enter a valid email.</span>
+          <label class="form-label" for="email">Email *</label>
+          <input class="form-input" type="email" id="email" placeholder="your@email.com" autocomplete="email" />
+          <div class="form-error" id="err-email">Please enter a valid email</div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="phone">Phone Number *</label>
-          <input type="tel" id="phone" class="form-input" placeholder="(555) 000-0000" autocomplete="tel" />
-          <span class="form-error" id="err-phone" style="display:none">Please enter your phone number.</span>
+          <label class="form-label" for="phone">Phone *</label>
+          <input class="form-input" type="tel" id="phone" placeholder="(202) 555-0100" autocomplete="tel" />
+          <div class="form-error" id="err-phone">Please enter your phone number</div>
         </div>
       </div>
     </div>
 
-    <!-- Step 2: Delivery Address (online orders = delivery only) -->
+    <!-- Delivery Address -->
     <div class="checkout-step-label"><span>2</span> Delivery Address</div>
     <div class="form-section">
-      <div style="padding: var(--space-3) var(--space-4); background: rgba(27,95,168,0.08); border: 1px solid rgba(27,95,168,0.25); border-radius: var(--radius-md); font-size: var(--text-xs); color: #5B9FE8; margin-bottom: var(--space-5);" role="note">
-        🚗 Online orders are <strong>delivery only</strong> — within 40 miles of Waldorf, MD. A <strong>$5.99</strong> delivery fee applies.<br/>
-        <span style="margin-top:4px;display:block;color:var(--text-muted);">Want to buy in person? Visit <strong style="color:var(--text)">Milk &amp; Honey H Street (DC)</strong> or <strong style="color:var(--text)">Milk &amp; Honey Woodmore (MD)</strong> — no order needed.</span>
-      </div>
       <div class="form-group">
         <label class="form-label" for="street">Street Address *</label>
-        <input type="text" id="street" class="form-input" placeholder="123 Main St" autocomplete="street-address" />
-        <span class="form-error" id="err-street" style="display:none">Please enter your street address.</span>
+        <input class="form-input" type="text" id="street" placeholder="123 Main St" autocomplete="street-address" />
+        <div class="form-error" id="err-street">Please enter your street address</div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="city">City *</label>
-          <input type="text" id="city" class="form-input" placeholder="City" autocomplete="address-level2" />
-          <span class="form-error" id="err-city" style="display:none">Please enter your city.</span>
+          <input class="form-input" type="text" id="city" placeholder="Washington" autocomplete="address-level2" />
+          <div class="form-error" id="err-city">Required</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="state">State *</label>
-          <input type="text" id="state" class="form-input" placeholder="MD" maxlength="2" autocomplete="address-level1" />
-          <span class="form-error" id="err-state" style="display:none">Please enter your state.</span>
+          <input class="form-input" type="text" id="state" placeholder="DC" autocomplete="address-level1" maxlength="2" />
+          <div class="form-error" id="err-state">Required</div>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label" for="zip">ZIP Code *</label>
-        <input type="text" id="zip" class="form-input" placeholder="20601" maxlength="10" autocomplete="postal-code" />
-        <span class="form-error" id="err-zip" style="display:none">Please enter your ZIP code.</span>
+        <input class="form-input" type="text" id="zip" placeholder="20001" autocomplete="postal-code" maxlength="10" />
+        <div class="form-error" id="err-zip">Please enter your ZIP code</div>
       </div>
     </div>
 
-    <!-- Step 3: Payment Method -->
+    <!-- Payment Method -->
     <div class="checkout-step-label"><span>3</span> Payment Method</div>
     <div class="form-section">
-      <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">Select how you'll send payment after placing your order.</p>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">Choose how you'll send payment. Your chosen app will open automatically after placing your order.</p>
       <div class="payment-options" role="radiogroup" aria-label="Choose payment method">
         <label class="payment-option" id="pay-paypal" onclick="setPayment('paypal')">
           <input type="radio" name="payment" value="paypal" id="radio-paypal" />
-          <div class="payment-icon" aria-hidden="true">💙</div>
+          <div class="payment-icon">💙</div>
           <div>
             <div class="payment-name">PayPal</div>
             <div class="payment-handle">@RawRemedease</div>
@@ -2017,26 +1668,17 @@
         </label>
         <label class="payment-option" id="pay-venmo" onclick="setPayment('venmo')">
           <input type="radio" name="payment" value="venmo" id="radio-venmo" />
-          <div class="payment-icon" aria-hidden="true">💸</div>
+          <div class="payment-icon">💸</div>
           <div>
             <div class="payment-name">Venmo</div>
             <div class="payment-handle">@Sean-Smith-RR</div>
           </div>
         </label>
       </div>
-      <span class="form-error" id="err-payment" style="display:none; margin-top: var(--space-3);">Please select a payment method.</span>
+      <div class="form-error" id="err-payment" style="margin-top:var(--space-3);">Please select a payment method</div>
     </div>
 
-    <!-- Step 4: Order Summary -->
-    <div class="checkout-step-label"><span>4</span> Order Summary</div>
-    <div class="checkout-order-summary" id="checkout-order-summary">
-      <div class="checkout-order-items" id="checkout-order-items"></div>
-      <div class="checkout-order-totals" id="checkout-order-totals"></div>
-    </div>
-
-    <button class="complete-order-btn" id="complete-order-btn" onclick="completeOrder()" aria-label="Complete your order">
-      Complete Order 🌿
-    </button>
+    <button class="complete-order-btn" id="complete-order-btn" onclick="completeOrder()">Complete Order 🌿</button>
   </div>
 </div>
 
@@ -2045,11 +1687,10 @@
 ============================================================ -->
 <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal">
-    <div class="modal-check" aria-hidden="true">🌿</div>
-    <h2 class="modal-title" id="modal-title">Order Submitted!</h2>
-    <p class="modal-subtitle">Thank you for your order. Please send payment using the instructions below.</p>
+    <div class="modal-check">🌿</div>
+    <h2 class="modal-title" id="modal-title">Almost Done!</h2>
+    <p class="modal-subtitle" id="modal-subtitle">Complete your payment to confirm your order.</p>
     <p class="modal-order-num" id="modal-order-num">Order #RR-000000</p>
-
     <div class="payment-instruction-box">
       <div class="payment-instruction-label">Payment Method</div>
       <div class="payment-instruction-method" id="modal-pay-method">PayPal</div>
@@ -2057,33 +1698,26 @@
       <div class="payment-amount-box">
         <div class="payment-amount-label">Amount Due</div>
         <div class="payment-amount-value" id="modal-amount">$0.00</div>
-        <div class="payment-amount-note" id="modal-amount-note"></div>
+        <div class="payment-amount-note" id="modal-amount-note">Includes $5.99 delivery fee</div>
       </div>
       <div class="payment-ref-note" id="modal-ref-note">
         Include your order number as reference when sending payment.
       </div>
     </div>
-
-    <button class="modal-close-btn" onclick="closeModal()" aria-label="Close order confirmation">
-      Done — Got It!
-    </button>
+    <button class="modal-close-btn" onclick="closeModal()">Done — Got It! ✓</button>
   </div>
 </div>
-
 
 <!-- Order Confirmation Banner -->
-<div id="order-confirm-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:500; background:#1a7a4a; color:#fff; padding:14px 24px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.15); animation: slideDown 0.4s ease;">
-  <div style="max-width:640px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
-    <span style="font-size:20px;">✅</span>
-    <span id="banner-text" style="font-weight:600; font-size:15px;">Order placed! Complete your payment to confirm delivery.</span>
-    <button onclick="document.getElementById('order-confirm-banner').style.display='none'" style="background:rgba(255,255,255,0.25); border:none; color:#fff; border-radius:20px; padding:4px 12px; cursor:pointer; font-size:13px; margin-left:8px;">✕ Dismiss</button>
+<div id="order-confirm-banner">
+  <div class="banner-inner">
+    <span>✅</span>
+    <span class="banner-text" id="banner-text">Order placed! Complete your payment to confirm delivery.</span>
+    <button class="banner-dismiss" onclick="document.getElementById('order-confirm-banner').style.display='none'">✕ Dismiss</button>
   </div>
 </div>
-<style>
-  @keyframes slideDown { from { transform: translateY(-100%); opacity:0; } to { transform: translateY(0); opacity:1; } }
-</style>
 
-<!-- Toast container -->
+<!-- Toast -->
 <div id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <!-- ============================================================
@@ -2096,179 +1730,131 @@
   const PRICE_SINGLE = 9;
   const PRICE_BUNDLE = 21; // 3 for $21
 
-  let cart = {}; // { drinkId: { name, qty } }
+  let cart = {};
+  let selectedPayment = null;
 
-
-
-  function saveCart() {
-    
-  }
-
-  // Discount formula: floor(total/3)*21 + (total%3)*9
   function calcTotal(totalQty) {
     const bundles = Math.floor(totalQty / 3);
     const singles = totalQty % 3;
     return (bundles * PRICE_BUNDLE) + (singles * PRICE_SINGLE);
   }
 
-  function getTotalQty() {
-    return Object.values(cart).reduce((s, v) => s + v.qty, 0);
-  }
-
   function getRegularTotal(totalQty) {
     return totalQty * PRICE_SINGLE;
   }
 
-  // ============================================================
-  // MENU QUANTITY CONTROLS
-  // ============================================================
-  // Called by +/- buttons on drink cards
-  function updateDrinkQty(id, delta) {
-    const current = (cart[id] && cart[id].qty) || 0;
-    const newQty = Math.max(0, Math.min(9, current + delta));
-    const nameEl = document.querySelector(`[data-drink-id="${id}"] .drink-name`);
-    const name = nameEl ? nameEl.textContent : id;
-
-    if (newQty === 0) {
-      delete cart[id];
-    } else {
-      cart[id] = { name, qty: newQty };
-    }
-    const display = document.getElementById(`qty-${id}`);
-    if (display) display.textContent = newQty;
-    saveCart();
-    updateCartUI();
+  function getTotalQty() {
+    return Object.values(cart).reduce((s, i) => s + i.qty, 0);
   }
 
-  // Add 1 to cart from "Add to Cart" button
+  // ============================================================
+  // ADD / UPDATE CART
+  // ============================================================
   function addToCart(id, name, qty) {
-    const current = (cart[id] && cart[id].qty) || 0;
-    cart[id] = { name, qty: Math.min(9, current + qty) };
-    const display = document.getElementById(`qty-${id}`);
-    if (display) display.textContent = cart[id].qty;
-    saveCart();
+    if (cart[id]) {
+      cart[id].qty += qty;
+    } else {
+      cart[id] = { name, qty };
+    }
     updateCartUI();
-    showToast(`🌿 Added ${name} to cart`, 'green');
+    showToast(name + ' added to cart', 'green');
+  }
+
+  function updateDrinkQty(id, delta) {
+    const name = document.querySelector('[data-drink-id="' + id + '"] .drink-name').textContent;
+    if (!cart[id]) cart[id] = { name, qty: 0 };
+    cart[id].qty = Math.max(0, cart[id].qty + delta);
+    if (cart[id].qty === 0) delete cart[id];
+    updateCartUI();
+  }
+
+  function updateCartQty(id, delta) {
+    if (!cart[id]) return;
+    cart[id].qty = Math.max(0, cart[id].qty + delta);
+    if (cart[id].qty === 0) delete cart[id];
+    updateCartUI();
   }
 
   // ============================================================
-  // CART UI UPDATES
+  // RENDER CART
   // ============================================================
   function updateCartUI() {
     const totalQty = getTotalQty();
-    const discountedTotal = calcTotal(totalQty);
-    const regularTotal = getRegularTotal(totalQty);
-    const savings = regularTotal - discountedTotal;
+    const cartCount = totalQty;
 
-    // Header count badge
-    const countBadge = document.getElementById('cart-count');
-    const menuCount = document.getElementById('menu-cart-count');
-    if (countBadge) {
-      countBadge.textContent = totalQty;
-      countBadge.classList.toggle('hidden', totalQty === 0);
-    }
-    if (menuCount) menuCount.textContent = totalQty;
+    // Update all cart count badges
+    document.getElementById('nav-cart-count').textContent = cartCount;
+    document.getElementById('nav-cart-count-mobile').textContent = cartCount;
+    document.getElementById('menu-cart-count').textContent = cartCount;
 
-    // Cart items list
-    const list = document.getElementById('cart-items-list');
-    const empty = document.getElementById('cart-empty');
-    const summary = document.getElementById('cart-summary');
+    // Sync qty displays on menu cards
+    const drinkIds = ['apb','cinanabutter','carat14','greenlight','serenegreen','darkknight','watermelon'];
+    drinkIds.forEach(id => {
+      const el = document.getElementById('qty-' + id);
+      if (el) el.textContent = cart[id] ? cart[id].qty : 0;
+    });
+
+    // Cart items
+    const emptyEl  = document.getElementById('cart-empty');
+    const itemsEl  = document.getElementById('cart-items');
+    const footerEl = document.getElementById('cart-footer');
 
     if (totalQty === 0) {
-      if (list) {
-        list.innerHTML = '';
-        list.appendChild(empty);
-      }
-      if (summary) summary.style.display = 'none';
+      emptyEl.style.display  = 'block';
+      itemsEl.innerHTML      = '';
+      footerEl.style.display = 'none';
       return;
     }
 
-    // Build item rows
-    let itemsHTML = '';
-    Object.entries(cart).forEach(([id, item]) => {
-      itemsHTML += `
-        <div class="cart-item" role="listitem">
-          <div class="cart-item-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <div class="cart-item-info">
-            <div class="cart-item-name" title="${item.name}">${item.name}</div>
-            <div class="cart-item-price">$${(item.qty * PRICE_SINGLE).toFixed(2)}</div>
-          </div>
-          <div class="cart-item-qty">
-            <button class="cart-qty-btn" onclick="updateDrinkQty('${id}', -1)" aria-label="Decrease ${item.name} quantity">−</button>
-            <span class="cart-qty-display" aria-label="${item.qty} in cart">${item.qty}</span>
-            <button class="cart-qty-btn" onclick="updateDrinkQty('${id}', 1)" aria-label="Increase ${item.name} quantity">+</button>
-          </div>
-          <button class="cart-remove-btn" onclick="removeItem('${id}')" aria-label="Remove ${item.name} from cart">✕</button>
-        </div>`;
-    });
-    if (list) list.innerHTML = itemsHTML;
+    emptyEl.style.display  = 'none';
+    footerEl.style.display = 'block';
 
-    // Summary
-    if (summary) summary.style.display = 'block';
-    const dealEl = document.getElementById('deal-applied');
-    const discountRow = document.getElementById('discount-row');
-    const dealSavings = document.getElementById('deal-savings');
+    itemsEl.innerHTML = Object.entries(cart).map(([id, item]) => `
+      <div class="cart-item">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-controls">
+          <button class="cart-qty-btn" onclick="updateCartQty('${id}', -1)" aria-label="Decrease">−</button>
+          <span class="cart-qty">${item.qty}</span>
+          <button class="cart-qty-btn" onclick="updateCartQty('${id}', 1)" aria-label="Increase">+</button>
+        </div>
+        <div class="cart-item-price">$${(item.qty * PRICE_SINGLE).toFixed(2)}</div>
+      </div>
+    `).join('');
 
-    document.getElementById('summary-items').textContent = totalQty;
-    document.getElementById('summary-regular').textContent = `$${regularTotal.toFixed(2)}`;
-    document.getElementById('summary-total').textContent = `$${discountedTotal.toFixed(2)}`;
+    const discountedTotal = calcTotal(totalQty);
+    const regularTotal    = getRegularTotal(totalQty);
+    const savings         = regularTotal - discountedTotal;
+    const grandTotal      = discountedTotal + 5.99;
 
+    let totalsHtml = `
+      <div class="cart-total-row"><span>Subtotal (${totalQty} drink${totalQty !== 1 ? 's' : ''})</span><span>$${regularTotal.toFixed(2)}</span></div>
+    `;
     if (savings > 0) {
-      if (dealEl) { dealEl.classList.add('visible'); }
-      if (dealSavings) dealSavings.textContent = `$${savings.toFixed(2)}`;
-      if (discountRow) { discountRow.style.display = 'flex'; document.getElementById('summary-discount').textContent = `-$${savings.toFixed(2)}`; }
-    } else {
-      if (dealEl) dealEl.classList.remove('visible');
-      if (discountRow) discountRow.style.display = 'none';
+      totalsHtml += `<div class="cart-total-row discount"><span>🎉 Bundle Discount</span><span>−$${savings.toFixed(2)}</span></div>`;
     }
-
-    // Sync qty displays on menu cards
-    Object.entries(cart).forEach(([id, item]) => {
-      const d = document.getElementById(`qty-${id}`);
-      if (d) d.textContent = item.qty;
-    });
-    // Zero out cards not in cart
-    document.querySelectorAll('[data-drink-id]').forEach(card => {
-      const id = card.dataset.drinkId;
-      if (!cart[id]) {
-        const d = document.getElementById(`qty-${id}`);
-        if (d) d.textContent = 0;
-      }
-    });
-  }
-
-  function removeItem(id) {
-    const name = cart[id] ? cart[id].name : id;
-    delete cart[id];
-    saveCart();
-    updateCartUI();
-    showToast(`Removed ${name}`);
+    totalsHtml += `
+      <div class="cart-total-row"><span>Delivery Fee</span><span>$5.99</span></div>
+      <div class="cart-total-row grand"><span>Total</span><span>$${grandTotal.toFixed(2)}</span></div>
+    `;
+    document.getElementById('cart-totals').innerHTML = totalsHtml;
   }
 
   // ============================================================
-  // CART PANEL OPEN/CLOSE
+  // CART DRAWER OPEN/CLOSE
   // ============================================================
   function openCart() {
-    document.getElementById('cart-overlay').classList.add('open');
-    document.getElementById('cart-panel').classList.add('open');
+    document.getElementById('cart-backdrop').classList.add('open');
     document.body.style.overflow = 'hidden';
-    updateCartUI();
   }
 
   function closeCart() {
-    document.getElementById('cart-overlay').classList.remove('open');
-    document.getElementById('cart-panel').classList.remove('open');
+    document.getElementById('cart-backdrop').classList.remove('open');
     document.body.style.overflow = '';
   }
 
   // ============================================================
   // CHECKOUT
   // ============================================================
-  let selectedFulfillment = 'delivery'; // online orders are delivery only
-  let selectedPayment = null;
-
   function openCheckout() {
     const totalQty = getTotalQty();
     if (totalQty === 0) { showToast('Add drinks to your cart first!'); return; }
@@ -2282,57 +1868,53 @@
   function closeCheckout() {
     document.getElementById('checkout-screen').classList.remove('active');
     document.body.style.overflow = '';
+    openCart();
   }
 
-  function setDelivery(type) {
-    selectedFulfillment = type; // always 'delivery' for online orders
-    renderCheckoutSummary();
+  function renderCheckoutSummary() {
+    const totalQty        = getTotalQty();
+    const discountedTotal = calcTotal(totalQty);
+    const regularTotal    = getRegularTotal(totalQty);
+    const savings         = regularTotal - discountedTotal;
+    const grandTotal      = discountedTotal + 5.99;
+
+    const itemRows = Object.values(cart).map(item =>
+      `<div class="summary-item"><span>${item.name} × ${item.qty}</span><span>$${(item.qty * PRICE_SINGLE).toFixed(2)}</span></div>`
+    ).join('');
+
+    const discountRow = savings > 0
+      ? `<div class="summary-item" style="color:var(--green)"><span>🎉 Bundle Discount</span><span>−$${savings.toFixed(2)}</span></div>`
+      : '';
+
+    document.getElementById('checkout-summary').innerHTML = `
+      ${itemRows}
+      ${discountRow}
+      <div class="summary-item"><span>Delivery Fee</span><span>$5.99</span></div>
+      <div class="summary-total-row">
+        <span class="summary-total-label">Total Due</span>
+        <span class="summary-total-value">$${grandTotal.toFixed(2)}</span>
+      </div>
+    `;
   }
 
+  // ============================================================
+  // PAYMENT SELECTION
+  // ============================================================
   function setPayment(type) {
     selectedPayment = type;
     ['paypal','venmo'].forEach(t => {
-      const el = document.getElementById(`pay-${t}`);
-      if (el) el.classList.toggle('selected', t === type);
-      const radio = document.getElementById(`radio-${t}`);
-      if (radio) radio.checked = t === type;
+      const el    = document.getElementById('pay-' + t);
+      const radio = document.getElementById('radio-' + t);
+      if (el)    el.classList.toggle('selected', t === type);
+      if (radio) radio.checked = (t === type);
     });
     document.getElementById('err-payment').style.display = 'none';
   }
 
-  function renderCheckoutSummary() {
-    const totalQty = getTotalQty();
-    const discountedTotal = calcTotal(totalQty);
-    const regularTotal = getRegularTotal(totalQty);
-    const savings = regularTotal - discountedTotal;
-    const deliveryFee = selectedFulfillment === 'delivery' ? 5.99 : 0;
-    const grandTotal = discountedTotal + deliveryFee;
-
-    let itemsHTML = '';
-    Object.values(cart).forEach(item => {
-      itemsHTML += `
-        <div class="checkout-order-item">
-          <span>${item.name} × ${item.qty}</span>
-          <span>$${(item.qty * PRICE_SINGLE).toFixed(2)}</span>
-        </div>`;
-    });
-
-    let totalsHTML = `
-      <div class="checkout-total-row"><span class="lbl">Subtotal (${totalQty} drink${totalQty !== 1 ? 's' : ''})</span><span class="val">$${regularTotal.toFixed(2)}</span></div>`;
-    if (savings > 0) {
-      totalsHTML += `<div class="checkout-total-row" style="color:#6DCA71"><span class="lbl">3-for-$21 Discount</span><span class="val">-$${savings.toFixed(2)}</span></div>`;
-    }
-    if (deliveryFee > 0) {
-      totalsHTML += `<div class="checkout-total-row"><span class="lbl">Delivery Fee</span><span class="val">$${deliveryFee.toFixed(2)}</span></div>`;
-    }
-    totalsHTML += `<div class="checkout-total-row final"><span class="lbl">Total Due</span><span class="val">$${grandTotal.toFixed(2)}</span></div>`;
-
-    document.getElementById('checkout-order-items').innerHTML = itemsHTML;
-    document.getElementById('checkout-order-totals').innerHTML = totalsHTML;
-  }
-
+  // ============================================================
+  // COMPLETE ORDER
+  // ============================================================
   function completeOrder() {
-    // ── Validate all fields ──────────────────────────────────────
     let valid = true;
 
     const name  = document.getElementById('full-name').value.trim();
@@ -2344,8 +1926,8 @@
     const phoneErr = document.getElementById('err-phone');
     const payErr   = document.getElementById('err-payment');
 
-    if (!name)  { nameErr.style.display  = 'block'; document.getElementById('full-name').classList.add('error'); valid = false; }
-    else        { nameErr.style.display  = 'none';  document.getElementById('full-name').classList.remove('error'); }
+    if (!name) { nameErr.style.display = 'block'; document.getElementById('full-name').classList.add('error'); valid = false; }
+    else        { nameErr.style.display = 'none';  document.getElementById('full-name').classList.remove('error'); }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       emailErr.style.display = 'block'; document.getElementById('email').classList.add('error'); valid = false;
@@ -2366,43 +1948,38 @@
 
     if (!valid) { showToast('Please fill in all required fields.'); return; }
 
-    // ── Build order ──────────────────────────────────────────────
     const totalQty        = getTotalQty();
     const discountedTotal = calcTotal(totalQty);
-    const deliveryFee     = 5.99;
-    const grandTotal      = discountedTotal + deliveryFee;
+    const grandTotal      = discountedTotal + 5.99;
     const orderNum        = 'RR-' + Math.floor(100000 + Math.random() * 900000);
 
-    const street = document.getElementById('street').value.trim();
-    const city   = document.getElementById('city').value.trim();
-    const state  = document.getElementById('state').value.trim();
-    const zip    = document.getElementById('zip').value.trim();
+    const street     = document.getElementById('street').value.trim();
+    const city       = document.getElementById('city').value.trim();
+    const state      = document.getElementById('state').value.trim();
+    const zip        = document.getElementById('zip').value.trim();
     const fullAddress = street + ', ' + city + ', ' + state + ' ' + zip;
 
     const itemLines = Object.values(cart).map(item =>
       item.name + ' x' + item.qty + ' — $' + (item.qty * PRICE_SINGLE).toFixed(2)
-    ).join('\n');
+    ).join(', ');
 
     const savings = getRegularTotal(totalQty) - discountedTotal;
-    const discountLine = savings > 0 ? '\nDiscount (3 for $21): -$' + savings.toFixed(2) : '';
+    const discountLine = savings > 0 ? ' (Bundle discount: -$' + savings.toFixed(2) + ')' : '';
 
-    // ── Payment info ─────────────────────────────────────────────
-    const PAYPAL_LINK  = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
-    const VENMO_LINK   = 'https://venmo.com/Sean-Smith-RR?txn=pay&amount=' + grandTotal.toFixed(2) + '&note=' + encodeURIComponent(orderNum);
+    const PAYPAL_LINK = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
+    const VENMO_LINK  = 'https://venmo.com/Sean-Smith-RR?txn=pay&amount=' + grandTotal.toFixed(2) + '&note=' + encodeURIComponent(orderNum);
 
     const paymentInfo = {
-      paypal:  { method: 'PayPal',   handle: '@RawRemedease',      link: PAYPAL_LINK,  note: 'A PayPal payment page has opened — send the exact amount shown.' },
-      venmo:   { method: 'Venmo',    handle: '@Sean-Smith-RR',     link: VENMO_LINK,   note: 'Venmo has opened — confirm the amount and send.' }
+      paypal: { method: 'PayPal', handle: '@RawRemedease',  link: PAYPAL_LINK, note: 'A PayPal payment page has opened — send the exact amount shown.' },
+      venmo:  { method: 'Venmo',  handle: '@Sean-Smith-RR', link: VENMO_LINK,  note: 'Venmo has opened — confirm the amount and send.' }
     };
 
     const info = paymentInfo[selectedPayment];
 
-    // ── Disable button, show sending state ───────────────────────
     const btn = document.getElementById('complete-order-btn');
-    btn.disabled = true;
-    btn.innerHTML = 'Sending order... ⏳';
+    btn.disabled    = true;
+    btn.textContent = 'Sending order...';
 
-    // ── Send order email to Sean via Formspree ───────────────────
     fetch('https://formspree.io/f/xvzlqbjk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2421,65 +1998,76 @@
       })
     })
     .finally(() => {
-      btn.disabled = false;
-      btn.innerHTML = 'Complete Order 🌿';
+      btn.disabled    = false;
+      btn.textContent = 'Complete Order 🌿';
 
-      // ── Open payment app ──────────────────────────────────────
-      if (info.link) {
-        window.open(info.link, '_blank');
-      }
+      if (info.link) window.open(info.link, '_blank');
 
-      // ── Show confirmation modal ───────────────────────────────
-      document.getElementById('modal-title').textContent      = info.link ? 'Almost Done! 🌿' : 'Order Received! 🌿';
-      document.getElementById('modal-subtitle').textContent   = info.link
+      document.getElementById('modal-title').textContent    = info.link ? 'Almost Done! 🌿' : 'Order Received! 🌿';
+      document.getElementById('modal-subtitle').textContent = info.link
         ? 'Your payment app has opened. Complete the payment there to confirm your order.'
-        : 'Complete your payment to confirm your order.';
+        : 'Send payment to complete your order.';
       document.getElementById('modal-order-num').textContent  = 'Order # ' + orderNum;
       document.getElementById('modal-pay-method').textContent = info.method;
       document.getElementById('modal-pay-handle').textContent = info.handle;
       document.getElementById('modal-amount').textContent     = '$' + grandTotal.toFixed(2);
       document.getElementById('modal-amount-note').textContent = 'Includes $5.99 delivery fee';
-      document.getElementById('modal-ref-note').innerHTML     =
+      document.getElementById('modal-ref-note').innerHTML =
         '<strong>Important:</strong> Include <strong>"' + orderNum + '"</strong> as your payment note so Sean can match your order.<br/>' +
         '<span style="color:var(--text-muted);margin-top:4px;display:block;">' + info.note + '</span>' +
-        (info.link ? '<br/><span style="color:var(--text-muted);font-size:var(--text-xs);">App didn\'t open? <a href="' + info.link + '" target="_blank" rel="noopener" style="color:var(--blue-light);text-decoration:underline;">Click here to pay →</a></span>' : '');
+        (info.link ? '<br/><span style="font-size:var(--text-xs);color:var(--text-faint);">App didn\'t open? <a href="' + info.link + '" target="_blank" rel="noopener" style="color:var(--green);text-decoration:underline;">Click here to pay →</a></span>' : '');
+
       document.getElementById('modal-backdrop').classList.add('open');
 
-      // ── Clear cart ────────────────────────────────────────────
       cart = {};
       updateCartUI();
     });
   }
 
-
+  // ============================================================
+  // CLOSE MODAL
+  // ============================================================
   function closeModal() {
     document.getElementById('modal-backdrop').classList.remove('open');
     document.getElementById('checkout-screen').classList.remove('active');
     document.body.style.overflow = '';
 
-    // Show order confirmation banner on the main page
-    const banner = document.getElementById('order-confirm-banner');
-    const orderNum = document.getElementById('modal-order-num').textContent;
-    const payMethod = document.getElementById('modal-pay-method').textContent;
-    document.getElementById('banner-text').textContent =
-      'Order placed! Complete your ' + payMethod + ' payment to confirm delivery. (' + orderNum + ')';
-    banner.style.display = 'block';
-    // Auto-dismiss after 30 seconds
-    setTimeout(() => { banner.style.display = 'none'; }, 30000);
-    // Reset form
     ['full-name','email','phone','street','city','state','zip'].forEach(id => {
       const el = document.getElementById(id);
       if (el) { el.value = ''; el.classList.remove('error'); }
     });
-    selectedFulfillment = null;
     selectedPayment = null;
-    selectedPayment = null;
-    ['paypal','venmo'].forEach(id => { const el = document.getElementById(`pay-${id}`); if (el) el.classList.remove('selected'); });
+    ['paypal','venmo'].forEach(id => {
+      const el = document.getElementById('pay-' + id);
+      if (el) el.classList.remove('selected');
+    });
+
+    // Show confirmation banner
+    const orderNum  = document.getElementById('modal-order-num').textContent;
+    const payMethod = document.getElementById('modal-pay-method').textContent;
+    const banner    = document.getElementById('order-confirm-banner');
+    document.getElementById('banner-text').textContent =
+      'Order placed! Complete your ' + payMethod + ' payment to confirm delivery. (' + orderNum + ')';
+    banner.style.display = 'block';
+    setTimeout(() => { banner.style.display = 'none'; }, 30000);
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // ============================================================
-  // MOBILE NAV TOGGLE
+  // TOAST
+  // ============================================================
+  function showToast(msg, type) {
+    const container = document.getElementById('toast-container');
+    const toast     = document.createElement('div');
+    toast.className = 'toast' + (type ? ' ' + type : '');
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  // ============================================================
+  // HAMBURGER
   // ============================================================
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
@@ -2487,62 +2075,10 @@
     const isOpen = mobileNav.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
   });
-  mobileNav.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', false);
-    });
-  });
 
   // ============================================================
-  // TOAST NOTIFICATIONS
+  // WATERMELON SLIDESHOW
   // ============================================================
-  function showToast(msg, type) {
-    const container = document.getElementById('toast-container');
-    const toast = document.createElement('div');
-    toast.className = `toast${type ? ' ' + type : ''}`;
-    toast.textContent = msg;
-    container.appendChild(toast);
-    setTimeout(() => {
-      toast.style.animation = 'toastOut 300ms ease forwards';
-      setTimeout(() => toast.remove(), 300);
-    }, 2500);
-  }
-
-  // ============================================================
-  // SCROLL FADE ANIMATIONS
-  // ============================================================
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.fade-up').forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 4) * 80}ms`;
-    observer.observe(el);
-  });
-
-  // ============================================================
-  // KEYBOARD: ESC closes modals
-  // ============================================================
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (document.getElementById('modal-backdrop').classList.contains('open')) { closeModal(); }
-      else if (document.getElementById('checkout-screen').classList.contains('active')) { closeCheckout(); }
-      else { closeCart(); }
-    }
-  });
-
-  // ============================================================
-  // INIT
-  // ============================================================
-  updateCartUI();
-
-  // Watermelon photo slideshow
   (function() {
     const slides = document.querySelectorAll('.wm-slide');
     if (slides.length < 2) return;
@@ -2554,6 +2090,16 @@
     }, 3000);
   })();
 
+  // ============================================================
+  // FADE-UP SCROLL ANIMATION
+  // ============================================================
+  (function() {
+    const els = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => observer.observe(el));
+  })();
 </script>
 </body>
 </html>
