@@ -2368,12 +2368,10 @@
 
     const itemLines = Object.values(cart).map(item =>
       item.name + ' x' + item.qty + ' — $' + (item.qty * PRICE_SINGLE).toFixed(2)
-    ).join('
-');
+    ).join('\n');
 
     const savings = getRegularTotal(totalQty) - discountedTotal;
-    const discountLine = savings > 0 ? '
-Discount (3 for $21): -$' + savings.toFixed(2) : '';
+    const discountLine = savings > 0 ? '\nDiscount (3 for $21): -$' + savings.toFixed(2) : '';
 
     // ── Payment info ─────────────────────────────────────────────
     const PAYPAL_LINK  = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
@@ -2431,7 +2429,7 @@ Discount (3 for $21): -$' + savings.toFixed(2) : '';
       document.getElementById('modal-ref-note').innerHTML     =
         '<strong>Important:</strong> Include <strong>"' + orderNum + '"</strong> as your payment note so Sean can match your order.<br/>' +
         '<span style="color:var(--text-muted);margin-top:4px;display:block;">' + info.note + '</span>' +
-        (info.link ? '<br/><span style="color:var(--text-muted);font-size:var(--text-xs);">App didn't open? <a href="' + info.link + '" target="_blank" rel="noopener" style="color:var(--blue-light);text-decoration:underline;">Click here to pay →</a></span>' : '');
+        (info.link ? '<br/><span style="color:var(--text-muted);font-size:var(--text-xs);">App didn\'t open? <a href="' + info.link + '" target="_blank" rel="noopener" style="color:var(--blue-light);text-decoration:underline;">Click here to pay →</a></span>' : '');
       document.getElementById('modal-backdrop').classList.add('open');
 
       // ── Clear cart ────────────────────────────────────────────
