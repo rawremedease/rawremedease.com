@@ -1983,7 +1983,7 @@
     const savings = getRegularTotal(totalQty) - discountedTotal;
     const discountLine = savings > 0 ? ' (Bundle discount: -$' + savings.toFixed(2) + ')' : '';
 
-    const PAYPAL_LINK = 'https://www.paypal.me/RawRemedease/' + grandTotal.toFixed(2);
+    const PAYPAL_LINK = 'https://www.paypal.me/rawremedeaserr/' + grandTotal.toFixed(2);
     const VENMO_LINK  = 'https://venmo.com/Sean-Smith-RR?txn=pay&amount=' + grandTotal.toFixed(2) + '&note=' + encodeURIComponent(orderNum);
 
     const paymentInfo = {
